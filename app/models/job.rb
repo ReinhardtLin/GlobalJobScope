@@ -19,6 +19,13 @@ class Job < ActiveRecord::Base
   include PositionAssignment
   include EmployerAssignment
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  def as_indexed_json(options={})
+    self.as_json( :include => [:position, :employer, :locations] )
+  end
+
   def find_by_follow(user)
     self.follows.where( :user => user ).first
   end

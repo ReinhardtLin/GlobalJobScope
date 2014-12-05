@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :jobs
   has_many :follows
+  has_many :following_jobs, :through => :follows, :source => :job
+
   has_many :comments
 
   has_many :livings

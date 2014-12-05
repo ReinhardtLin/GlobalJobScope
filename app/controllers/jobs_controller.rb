@@ -4,11 +4,25 @@ class JobsController < ApplicationController
   before_action :set_job, :only => [ :show, :follower, :edit, :edit1, :edit2, :edit3, :update, :destroy]
 
   def index
-    if params[:location]
+    if params[:keyword]
+      @jobs = Job.search(params[:keyword]).records
+    elsif params[:location]
       @jobs = Job.located_with(params[:location])
     else
-      @jobs = Job.all
+      @jobs = Job.none
     end
+  end
+
+  def following
+    @jobs = current_user.following_jobs
+
+    render :index
+  end
+
+  def posting
+    @jobs = current_user.jobs
+
+    render :index
   end
 
   def new

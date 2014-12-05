@@ -21,3 +21,5 @@ module GjsDemo01
     # config.i18n.default_locale = :de
   end
 end
+
+Elasticsearch::Model.client = Elasticsearch::Client.new host: 'http://localhost:9200'

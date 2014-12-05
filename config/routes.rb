@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :jobs do
+    collection do
+      get :following
+      get :posting
+    end
+
     member do
       get :edit1
       get :edit2
