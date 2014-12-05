@@ -9,6 +9,6 @@ class CreateSpeakings < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :languages, :speaking_id
+
   end
 end
