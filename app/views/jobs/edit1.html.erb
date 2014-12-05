@@ -1,0 +1,14 @@
+<%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
+
+  <%= f.label :requirement, "Requirement" %>
+  <%= f.text_area :requirement %><br>
+
+  <%= f.label :responsibility, "Responsibility" %>
+  <%= f.text_area :responsibility %><br>
+
+  <%= f.submit "Save Change" %>
+<% end %>
+
+<%= link_to 'Exit w.o. Saving', jobs_path %> <br>
+<%= link_to 'Prev', edit_job_path(@job) %>
+<%= link_to 'Next', edit2_job_path(@job) %>

@@ -1,0 +1,2 @@
+module JobFollowsHelper
+end

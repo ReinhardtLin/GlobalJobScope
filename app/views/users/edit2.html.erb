@@ -1,0 +1,35 @@
+<%= render "menu" %>
+
+<h3>Education</h3>
+
+<%= link_to 'Add New Education', new_user_education_path(@user) %>
+<table border="1">
+  <tr>
+    <th>Degree</th>
+    <th>Institute</th>
+    <th>Current</th>
+    <th>Location</th>
+    <th>Profession</th>
+    <th>Period</th>
+    <th>Description</th>
+    <th>Operation</th>
+  </tr>
+  <% @user.educations.each do |education| %>
+  <tr>
+    <td><%= education.degree_name %></td>
+    <td><%= education.institute_name %></td>
+    <td><%= education.current.try(:name) %></td>
+    <td><%= education.all_locations %></td>
+    <td><%= education.all_professions %></td>
+    <td><%= education.from %> ~ <%= education.to %></td>
+    <td><%= education.description %></td>
+    <td>
+      <%= link_to 'Edit Education', edit_user_education_path(@user, education) %>
+      <%= link_to 'Delete Education', user_education_path(@user, education), :method => :delete %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Save Change' %>  <%= link_to 'Exit', user_path(current_user) %> <br>
+<%= link_to 'Prev' %>  <%= link_to 'Next' %>

@@ -1,0 +1,101 @@
+<%= link_to 'Edit', edit_user_path(current_user) %>
+
+<h2><%= @user.username %></h2>
+
+<h3>Photo</h3>
+<%= link_to image_tag( @user.logo.url(:medium) ), @user.logo.url %>
+
+<h3>Summary</h3>
+<%= @user.summary %>
+
+<table border="1">
+  <tr>
+    <th>Citizen of</th>
+    <th>Countries eligible to work in</th>
+    <th>Location</th>
+    <th>Birthday</th>
+    <th>Gender</th>
+  </tr>
+  <tr>
+    <td><%= @user.all_countries %></td>
+    <td><%= @user.all_eligibles %></td>
+    <td><%= @user.all_locations %></td>
+    <td><%= @user.birthday %></td>
+    <td><%= @user.gender.try(:name) %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit1_user_path(@user) %>
+<h3>Experience</h3>
+<table border="1">
+  <tr>
+    <th>Position</th>
+    <th>Employer</th>
+    <th>Current</th>
+    <th>Location</th>
+    <th>Salary</th>
+    <th>Period</th>
+    <th>Description</th>
+  </tr>
+  <% @user.experiences.each do |experience| %>
+  <tr>
+    <td><%= experience.position_name %></td>
+    <td><%= experience.employer_name %></td>
+    <td><%= experience.current.try(:name) %></td>
+    <td><%= experience.all_locations %></td>
+    <td><%= experience.salary %> USD/Yr</td>
+    <td><%= experience.from %> ~ <%= experience.to %></td>
+    <td><%= experience.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Edit', edit2_user_path(@user) %>
+
+<h3>Education</h3>
+<table border="1">
+  <tr>
+    <th>Degree</th>
+    <th>Institute</th>
+    <th>Current</th>
+    <th>Location</th>
+    <th>Profession</th>
+    <th>Period</th>
+    <th>Description</th>
+  </tr>
+  <% @user.educations.each do |education| %>
+  <tr>
+    <td><%= education.degree_name %></td>
+    <td><%= education.institute_name %></td>
+    <td><%= education.current.try(:name) %></td>
+    <td><%= education.all_locations %></td>
+    <td><%= education.all_professions %></td>
+    <td><%= education.from %> ~ <%= education.to %></td>
+    <td><%= education.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Language</h3>
+<table>
+  <tr>
+    <th>Language</th>
+    <th>Level</th>
+  </tr>
+  <% @user.speakings.each do |speaking| %>
+  <tr>
+    <td><%= speaking.language_name %></td>
+    <td><%= speaking.try(:name) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Skill</h3>
+<%= @user.skill %>
+
+<h3>Other Info</h3>
+<%= @user.other_info %>
+
+<%= link_to 'Edit', edit3_user_path(@user) %>
+
+<%= link_to 'Back to Index', jobs_path %>

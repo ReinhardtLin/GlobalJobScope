@@ -1,0 +1,7 @@
+<%= form_for @experience, :url => user_experiences_path(@user) do |f| %>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Add Experience" %>
+<% end %>
+
+<%= link_to 'Exit w.o. Saving', edit_user_path(@user) %>

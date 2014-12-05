@@ -1,0 +1,11 @@
+<%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
+
+  <%= f.label :suggestion, "Suggestion" %>
+  <%= f.text_area :suggestion %><br>
+
+
+  <%= f.submit "Save Change" %>
+<% end %>
+
+<%= link_to 'Exit w.o. Saving', jobs_path %> <br>
+<%= link_to 'Prev', edit2_job_path(@job) %>
