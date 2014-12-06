@@ -5,9 +5,8 @@
 
 <% end %>
 
-<% if @jobs.any? %>
-
 <%= link_to 'Post New Job', new_job_path %>
+<% if @jobs.any? %>
 <table border="1">
   <tr>
     <th>Position</th>
