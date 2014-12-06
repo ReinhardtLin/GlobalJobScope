@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GJS Demo01</title>
+  <title>Global Job Scope</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<%= link_to 'GJS Logo', root_path %> ||
 
 <% if current_user %>
-  <%= link_to 'GJS Logo', root_path %> |
-  <%= link_to 'My Following Job List', following_jobs_path %> |
-  <%= link_to 'Post Job List', posting_jobs_path %> |
-  <%= link_to 'Post New Job', new_job_path %> |
-  <%= link_to 'User Profile', user_path(current_user) %> |
-  <%= link_to('Setting', edit_registration_path(:user)) %> |
+  <%= link_to 'My Follow', following_jobs_path %> |
+  <%= link_to 'My Post', posting_jobs_path %> |
+  <%= link_to 'My Profile', user_path(current_user) %> |
+  <%= link_to('My Setting', edit_registration_path(:user)) %> |
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <% else %>
   <%= link_to('Sing Up', new_registration_path(:user)) %> |

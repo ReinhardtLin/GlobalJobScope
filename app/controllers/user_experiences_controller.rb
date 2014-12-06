@@ -18,7 +18,7 @@ class UserExperiencesController < ApplicationController
   def create
     @experience = @user.experiences.build( experience_params )
     if @experience.save
-      redirect_to edit_user_url( @user )
+      redirect_to edit1_user_url( @user )
     else
       redirect_to :back
     end
@@ -32,7 +32,7 @@ class UserExperiencesController < ApplicationController
     @experience = @user.experiences.find( params[:id] )
 
     if @experience.update( experience_params )
-      redirect_to edit_user_url( @user )
+      redirect_to edit1_user_url( @user )
     else
       redirect_to :back
     end
@@ -43,7 +43,7 @@ class UserExperiencesController < ApplicationController
     @experience = @user.experiences.find( params[:id] )
     @experience.destroy
 
-    redirect_to edit_user_url( @user )
+    redirect_to edit1_user_url( @user )
   end
 
   protected

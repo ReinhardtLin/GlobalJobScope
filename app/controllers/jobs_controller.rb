@@ -35,9 +35,9 @@ class JobsController < ApplicationController
 
     if @job.save
       flash[:notice] = "The job was successfully posted"
-      redirect_to edit1_job_path(@job)
+      redirect_to job_path(@job)
     else
-      render :new
+      redirect_to :back
     end
   end
 
@@ -65,14 +65,14 @@ class JobsController < ApplicationController
       flash[:notice] = "The job was successfully updated"
       redirect_to job_url(@job)
     else
-      render :edit
+      redirect_to :back
     end
   end
 
   def destroy
     @job.destroy
     flash[:alert] = "The job was successfully deleted"
-    redirect_to jobs_url
+    redirect_to posting_jobs_url
   end
 
   private

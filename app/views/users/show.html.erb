@@ -76,6 +76,7 @@
   <% end %>
 </table>
 
+<%= link_to 'Edit', edit3_user_path(@user) %>
 <h3>Language</h3>
 <table>
   <tr>
@@ -91,11 +92,9 @@
 </table>
 
 <h3>Skill</h3>
-<%= @user.skill %>
+<%= @user.skill %> <br>
 
 <h3>Other Info</h3>
-<%= @user.other_info %>
+<%= @user.other_info %> <br>
 
-<%= link_to 'Edit', edit3_user_path(@user) %>
-
-<%= link_to 'Back to Index', jobs_path %>
+<%= link_to 'Home', jobs_path %>

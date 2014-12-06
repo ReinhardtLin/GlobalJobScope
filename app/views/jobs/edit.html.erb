@@ -1,25 +1,9 @@
+<%= render "menu" %>
+
 <%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
-
-  <h3>Follows</h3>
-  <%= @job.follows_count %>
-  <% @job.follows.each do |f| %>
-    <%= link_to f.user.try(:username), job_path(f) %>
-  <% end %>
-  <br>
-
-  <h3>Comments</h3>
-  <ol>
-    <% @job.comments.each do |comment| %>
-    <li>
-      <%= comment.content %>
-    </li>
-    <% end %>
-  </ol>
 
   <%= f.submit "Save Change" %>
 <% end %>
 
-<%= link_to 'Exit w.o. Saving', jobs_path %> <br>
-
-<%= link_to 'Next', edit1_job_path(@job) %>
+<%= link_to 'Exit w.o. Saving', job_path(@job) %> <br>

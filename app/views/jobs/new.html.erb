@@ -1,8 +1,22 @@
 <%= form_for @job, :url => jobs_path do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 
+  <%= f.label :requirement, "Requirement" %>
+  <%= f.text_area :requirement %><br>
+
+  <%= f.label :responsibility, "Responsibility" %>
+  <%= f.text_area :responsibility %><br>
+
+  <%= f.label :benefit, "Benefit" %>
+  <%= f.text_area :benefit %><br>
+
+  <%= f.label :company_profile, "Company Profile" %>
+  <%= f.text_area :company_profile %><br>
+
+  <%= f.label :suggestion, "Suggestion" %>
+  <%= f.text_area :suggestion %><br>
+
   <%= f.submit "Post Job" %>
 <% end %>
 
 <%= link_to 'Exit w.o. Saving', jobs_path %> <br>
-<%= link_to 'Prev' %>  <%= link_to 'Next' %>

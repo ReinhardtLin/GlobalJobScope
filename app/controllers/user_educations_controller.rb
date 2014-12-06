@@ -18,7 +18,7 @@ class UserEducationsController < ApplicationController
   def create
     @education = @user.educations.build( education_params )
     if @education.save
-      redirect_to edit_user_url( @user )
+      redirect_to edit2_user_url( @user )
     else
       redirect_to :back
     end
@@ -32,7 +32,7 @@ class UserEducationsController < ApplicationController
     @education = @user.educations.find( params[:id] )
 
     if @education.update( education_params )
-      redirect_to edit_user_url( @user )
+      redirect_to edit2_user_url( @user )
     else
       redirect_to :back
     end
@@ -43,7 +43,7 @@ class UserEducationsController < ApplicationController
     @education = @user.educations.find( params[:id] )
     @education.destroy
 
-    redirect_to edit_user_url( @user )
+    redirect_to edit2_user_url( @user )
   end
 
   protected
