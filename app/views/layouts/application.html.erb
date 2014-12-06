@@ -17,7 +17,7 @@
   <%= link_to('My Setting', edit_registration_path(:user)) %> |
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <% else %>
-  <%= link_to('Sing Up', new_registration_path(:user)) %> |
+  <%= link_to('Sign Up', new_registration_path(:user)) %> |
   <%= link_to('Login', new_session_path(:user)) %>
 <% end %> <br>
 
