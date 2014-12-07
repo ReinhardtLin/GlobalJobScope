@@ -1,77 +1,86 @@
-<p>Follows</p>
-<%= @job.follows_count %>
-<% if follow = @job.find_by_follow(current_user) %>
-    <%= form_for Follow.new, :url => job_follow_path(@job, follow), :method => :delete do |f| %>
-    <%= f.submit "Unfollow" %>
-  <% end %>
-<% else %>
-  <%= form_for Follow.new, :url => job_follows_path(@job) do |f| %>
-    <%= f.submit "Follow" %>
-  <% end %>
-<% end %>
+<div class="job_follows">
+  <div class="wrapper">
+    <span>Follows</span>
+    <%= @job.follows_count %>
+    <% if follow = @job.find_by_follow(current_user) %>
+        <%= form_for Follow.new, :url => job_follow_path(@job, follow), :method => :delete do |f| %>
+        <%= f.submit "Unfollow", :class => 'unfollow' %>
+      <% end %>
+    <% else %>
+      <%= form_for Follow.new, :url => job_follows_path(@job) do |f| %>
+        <%= f.submit "Follow", :class => 'follow' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <h3><%= link_to "Followers", follower_job_path(@job) %></h3>
 
 <%= link_to "Edit", edit_job_path(@job) %>
 
-<h3>Position</h3>
-<%= @job.position_name %>
+<div class="job_follows_table">
+  <div class="wrapper">
+    <h3>Position</h3>
+    <%= @job.position_name %>
 
-<h4>Employer</h4>
-<%= @job.employer_name %>
+    <h4>Employer</h4>
+    <%= @job.employer_name %>
 
-<p>Type: <%= @job.type.try(:name) %><p>
+    <p>Type: <%= @job.type.try(:name) %><p>
 
-<p>Number</p>
-<%= @job.number %>
+    <p>Number</p>
+    <%= @job.number %>
 
-<p>Location</p>
-<%= @job.all_locations %>
+    <p>Location</p>
+    <%= @job.all_locations %>
 
-<p>Deadline</p>
-<p><%= @job.deadline %></p>
+    <p>Deadline</p>
+    <p><%= @job.deadline %></p>
 
-<p>Salary</p>
-<%= @job.salary_min %> ~ <%= @job.salary_max %> @ <%= @job.currency %>/Yr <br>
+    <p>Salary</p>
+    <%= @job.salary_min %> ~ <%= @job.salary_max %> @ <%= @job.currency %>/Yr <br>
 
-<%= link_to "Edit", edit1_job_path(@job) %>
+    <%= link_to "Edit", edit1_job_path(@job) %>
 
-<p>Requirement</p>
-<%= @job.requirement %>
+    <p>Requirement</p>
+    <%= @job.requirement %>
 
-<p>Responsibility</p>
-<%= @job.responsibility %>
+    <p>Responsibility</p>
+    <%= @job.responsibility %>
 
-<%= link_to "Edit", edit2_job_path(@job) %>
+    <%= link_to "Edit", edit2_job_path(@job) %>
 
-<p>Benefit</p>
-<%= @job.benefit %>
+    <p>Benefit</p>
+    <%= @job.benefit %>
 
-<p>Company Profile</p>
-<%= @job.company_profile %>
+    <p>Company Profile</p>
+    <%= @job.company_profile %>
 
-<%= link_to "Edit", edit3_job_path(@job) %>
+    <%= link_to "Edit", edit3_job_path(@job) %>
 
-<p>Suggestion</p>
-<%= @job.suggestion %>
+    <p>Suggestion</p>
+    <%= @job.suggestion %>
 
-<h3>Comments</h3>
-<ol>
-  <% @job.comments.each do |comment| %>
-  <li>
-    <%= comment.content %>
-    <%= link_to comment.user.try(:username), job_path(comment) %>
-    <%= link_to 'Delete Comment', job_comment_path(@job, comment), :method => :delete %>
-  </li>
-  <% end %>
-</ol>
+    <div class="comment_wrapper">
+      <h3>Comments</h3>
+      <ol>
+        <% @job.comments.each do |comment| %>
+        <li>
+          <%= comment.content %>
+          <%= link_to comment.user.try(:username), job_path(comment) %>
+          <%= link_to 'Delete Comment', job_comment_path(@job, comment), :method => :delete %>
+        </li>
+        <% end %>
+      </ol>
+    </div>
 
-<h3>New comment</h3>
-<%= form_for Comment.new, :url => job_comments_path(@job) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit "Add New Comment" %>
-<% end %>
+    <div class="new_comment_wrapper">
+      <h3>New comment</h3>
+      <%= form_for Comment.new, :url => job_comments_path(@job) do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "Add New Comment" %>
+      <% end %>
+    </div>
 
-<p><%= link_to 'My Post', posting_jobs_path %></p>
-<p><%= link_to 'My Follow', following_jobs_path %></p>
-<p><%= link_to 'New Search', jobs_path %></p>
+  </div>
+</div>

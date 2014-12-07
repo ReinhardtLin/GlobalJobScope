@@ -8,17 +8,30 @@
 </head>
 <body>
 
-<%= link_to 'GJS Logo', root_path %> ||
-
 <% if current_user %>
-  <%= link_to 'My Follow', following_jobs_path %> |
-  <%= link_to 'My Post', posting_jobs_path %> |
-  <%= link_to 'My Profile', user_path(current_user) %> |
-  <%= link_to('My Setting', edit_registration_path(:user)) %> |
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <div class = 'after_login_wrapper'>
+    <div class='wrapper'>
+      <%= link_to 'GJS Logo', root_path, :class => 'logo' %>
+      <div class='nav'>
+        <%= link_to 'My Follow', following_jobs_path, :class => 'followingjoblist' %>
+        <%= link_to 'My Post', posting_jobs_path, :class => 'joblist' %>
+        <%= link_to 'Post Job', new_job_path, :class => 'newjob' %>
+        <%= link_to 'My Profile', user_path(current_user), :class => 'userprofile' %>
+        <%= link_to('My Setting', edit_registration_path(:user), :class => 'setting') %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'logout') %>
+      </div>
+    </div>
+  </div>
 <% else %>
-  <%= link_to('Sign Up', new_registration_path(:user)) %> |
-  <%= link_to('Login', new_session_path(:user)) %>
+  <div class='before_login_wrapper'>
+    <div class='wrapper'>
+      <%= link_to 'GJS Logo', root_path, :class => 'logo' %>
+      <div class='before_login'>
+        <%= link_to('Sign Up', new_registration_path(:user), :class => 'signup') %>
+        <%= link_to('Login', new_session_path(:user), :class => 'login') %>
+        </div>
+    </div>
+  </div>
 <% end %> <br>
 
 

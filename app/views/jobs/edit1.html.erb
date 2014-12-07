@@ -2,11 +2,15 @@
 
 <%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
 
-  <%= f.label :requirement, "Requirement" %>
-  <%= f.text_area :requirement %><br>
+  <div class="requirement">
+    <%= f.label :requirement, "Requirement" %>
+    <%= f.text_area :requirement %>
+  </div>
 
-  <%= f.label :responsibility, "Responsibility" %>
-  <%= f.text_area :responsibility %><br>
+  <div class="responsibility">
+    <%= f.label :responsibility, "Responsibility" %>
+    <%= f.text_area :responsibility %>
+  </div>
 
   <%= f.submit "Save Change" %>
 <% end %>

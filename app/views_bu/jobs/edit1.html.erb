@@ -2,10 +2,11 @@
 
 <%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
 
-  <div class="suggestion">
-    <%= f.label :suggestion, "Suggestion" %>
-    <%= f.text_area :suggestion %>
-  </div>
+  <%= f.label :requirement, "Requirement" %>
+  <%= f.text_area :requirement %><br>
+
+  <%= f.label :responsibility, "Responsibility" %>
+  <%= f.text_area :responsibility %><br>
 
   <%= f.submit "Save Change" %>
 <% end %>

@@ -1,59 +1,65 @@
+<%= image_tag('cover.jpg', :class => 'cover') %>
+<h2 class='slogan'>Get hired oversea, enrich your life</h2>
 <%= form_tag root_path, :method => :get do %>
 
-  <%= text_field_tag "keyword" %>
-  <%= submit_tag "Search" %>
+  <div class='search_wrapper'>
+    <%= text_field_tag "keyword", "ENTER KEYWORD TO SEARCH JOB" %>
+    <%= submit_tag "Search", :class => 'search' %>
+  </div>
 
 <% end %>
 
-<%= link_to 'Post New Job', new_job_path %>
 <% if @jobs.any? %>
-<table border="1">
-  <tr>
-    <th>Position</th>
-    <th>Employer</th>
-    <th>Type</th>
-    <th>Number</th>
-    <th>Location</th>
-    <th>Salary</th>
-    <th>Deadline</th>
-    <th>Follows</th>
-    <th>Comments</th>
-    <th>Poster</th>
-    <th>Operation</th>
-  </tr>
-  <% @jobs.each do |job| %>
-  <tr>
-    <td><%= job.position_name %></td>
-    <td><%= job.employer_name %></td>
-    <td><%= job.type.try(:name) %></td>
-    <td><%= job.number %></td>
-    <td><%= raw location_links(job.all_locations)%></td>
-    <td><%= job.salary_min %> ~ <%= job.salary_max %> @ <%= job.currency %>/Yr</td>
-    <td><%= job.deadline %></td>
-    <td>
-      <%= job.follows_count %>
-      <% if follow = job.find_by_follow(current_user) %>
-        <%= form_for Follow.new, :url => job_follow_path(job, follow), :method => :delete do |f| %>
-          <%= f.submit "Unfollow" %>
+  <div>
+    <div class="wrapper">
+      <table class="table table-hover">
+        <tr>
+          <th>Position</th>
+          <th>Employer</th>
+          <th>Type</th>
+          <th>Number</th>
+          <th>Location</th>
+          <th>Salary</th>
+          <th>Deadline</th>
+          <th>Follows</th>
+          <th>Comments</th>
+          <th>Poster</th>
+          <th>Operation</th>
+        </tr>
+        <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.position_name %></td>
+          <td><%= job.employer_name %></td>
+          <td><%= job.type.try(:name) %></td>
+          <td><%= job.number %></td>
+          <td><%= raw location_links(job.all_locations)%></td>
+          <td><%= job.salary_min %> ~ <%= job.salary_max %> @ <%= job.currency %>/Yr</td>
+          <td><%= job.deadline %></td>
+          <td>
+            <%= job.follows_count %>
+            <% if follow = job.find_by_follow(current_user) %>
+              <%= form_for Follow.new, :url => job_follow_path(job, follow), :method => :delete do |f| %>
+                <%= f.submit "Unfollow", :class => 'unfollow' %>
+              <% end %>
+            <% else %>
+              <%= form_for Follow.new, :url => job_follows_path(job) do |f| %>
+                <%= f.submit "Follow", :class => 'follow' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= job.comments_count %></td>
+          <td>
+            <%= link_to job.user.username, user_path(job.user) %>
+          </td>
+          <td>
+            <%= link_to "Show Detail", job_path(job) %>
+            <%= link_to "Edit Job", edit_job_path(job) %>
+            <%= link_to "Followers", follower_job_path(job) %>
+            <%= link_to "Delete Job", job_path(job), :method => :delete %>
+          </td>
+        </tr>
         <% end %>
-      <% else %>
-        <%= form_for Follow.new, :url => job_follows_path(job) do |f| %>
-          <%= f.submit "Follow" %>
-        <% end %>
-      <% end %>
-    </td>
-    <td><%= job.comments_count %></td>
-    <td>
-      <%= link_to job.user.username, user_path(job.user) %>
-    </td>
-    <td>
-      <%= link_to "Show Detail", job_path(job) %>
-      <%= link_to "Edit Job", edit_job_path(job) %>
-      <%= link_to "Followers", follower_job_path(job) %>
-      <%= link_to "Delete Job", job_path(job), :method => :delete %>
-    </td>
-  </tr>
-  <% end %>
-</table>
-
+      </table>
+    </div>
+  </div>
 <% end %>

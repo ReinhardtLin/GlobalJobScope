@@ -1,0 +1,35 @@
+<%= render "menu" %>
+
+<h3>Experience</h3>
+
+<%= link_to 'Add New Experience', new_user_experience_path(@user) %>
+<table border="1">
+  <tr>
+    <th>Position</th>
+    <th>Employer</th>
+    <th>Current</th>
+    <th>Location</th>
+    <th>Salary</th>
+    <th>Period</th>
+    <th>Description</th>
+    <th>Operation</th>
+  </tr>
+  <% @user.experiences.each do |experience| %>
+  <tr>
+    <td><%= experience.position_name %></td>
+    <td><%= experience.employer_name %></td>
+    <td><%= experience.current.try(:name) %></td>
+    <td><%= experience.all_locations %></td>
+    <td><%= experience.salary %> USD/Yr</td>
+    <td><%= experience.from %> ~ <%= experience.to %></td>
+    <td><%= experience.description %></td>
+    <td>
+      <%= link_to 'Edit Experience', edit_user_experience_path(@user, experience) %>
+      <%= link_to 'Delete Experience', user_experience_path(@user, experience), :method => :delete %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Save Change", user_path(current_user) %>
+<%= link_to 'Exit', user_path(current_user) %>

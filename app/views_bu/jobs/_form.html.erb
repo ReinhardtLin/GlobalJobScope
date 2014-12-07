@@ -1,0 +1,30 @@
+<% if @job.errors.any? %>
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+<% end %>
+
+  <%= f.label :position, "Position" %>
+  <%= f.text_field :position_name %><br>
+
+  <%= f.label :employer, "Employer" %>
+  <%= f.text_field :employer_name %><br>
+
+  <%= f.collection_select(:type_id, Type.all, :id, :name) %><br>
+
+  <%= f.label :number, "No." %>
+  <%= f.text_field :number %><br>
+
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :all_locations, placeholder: "Locations separated with comma" %> <br>
+
+  <%= f.label :deadline, "Deadline"%>
+  <%= f.date_field :deadline %><br>
+
+  <%= f.label :salary_min, "Salary" %>
+  <%= f.text_field :salary_min %> ~ <%= f.text_field :salary_max %><br>
+
+  <%= f.label :currency, "Currency" %>
+  <%= f.text_field :currency %> /Year <br>
