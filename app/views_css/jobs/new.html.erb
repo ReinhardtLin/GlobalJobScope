@@ -1,0 +1,32 @@
+<%= form_for @job, :url => jobs_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+
+  <div class="requirement">
+    <%= f.label :requirement, "Requirement" %>
+    <%= f.text_area :requirement %>
+  </div>
+
+  <div class="responsibility">
+    <%= f.label :responsibility, "Responsibility" %>
+    <%= f.text_area :responsibility %>
+  </div>
+
+  <div class="benefit">
+    <%= f.label :benefit, "Benefit" %>
+    <%= f.text_area :benefit %>
+  </div>
+
+  <div class="company_profile">
+    <%= f.label :company_profile, "Company Profile" %>
+    <%= f.text_area :company_profile %>
+  </div>
+
+  <div class="suggestion">
+    <%= f.label :suggestion, "Suggestion" %>
+    <%= f.text_area :suggestion %>
+  </div>
+
+  <%= f.submit "Post Job" %>
+<% end %>
+
+<%= link_to 'Exit w.o. Saving', jobs_path %>

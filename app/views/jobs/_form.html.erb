@@ -5,43 +5,26 @@
       <% end %>
       </ul>
 <% end %>
-<div class='new_post_job'>
-  <h2 class="new_post_job_title">Post New Job</h2>
-  <div class='wrapper'>
 
-    <div class="position">
-      <%= f.label :position, "Position" %>
-      <%= f.text_field :position_name %>
+  <%= f.label :position, "Position" %>
+  <%= f.text_field :position_name %><br>
 
-    <div class="employer">
-      <%= f.label :employer, "Employer" %>
-      <%= f.text_field :employer_name %>
+  <%= f.label :employer, "Employer" %>
+  <%= f.text_field :employer_name %><br>
 
-    <div class="type">
-      <%= f.collection_select(:type_id, Type.all, :id, :name) %>
-    </div>
+  <%= f.collection_select(:type_id, Type.all, :id, :name) %><br>
 
-    <div class="no">
-      <%= f.label :number, "No." %>
-      <%= f.text_field :number %>
-    </div>
+  <%= f.label :number, "No." %>
+  <%= f.text_field :number %><br>
 
-    <div class="location">
-      <%= f.label :location, "Location" %>
-      <%= f.text_field :all_locations, placeholder: "Locations separated with comma" %>
-    </div>
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :all_locations, placeholder: "Locations separated with comma" %> <br>
 
-    <div class="deadline">
-      <%= f.label :deadline, "Deadline"%>
-      <%= f.date_field :deadline %>
-    </div>
+  <%= f.label :deadline, "Deadline"%>
+  <%= f.date_field :deadline %><br>
 
-    <div class="salary">
-      <%= f.label :salary_min, "Salary" %>
-      <%= f.text_field :salary_min %> <span>~</span> <%= f.text_field :salary_max %>
-    </div>
+  <%= f.label :salary_min, "Salary" %>
+  <%= f.text_field :salary_min %> ~ <%= f.text_field :salary_max %><br>
 
-    <div class="currency">
-      <%= f.label :currency, "Currency" %>
-      <%= f.text_field :currency %> /Year
-    </div>
+  <%= f.label :currency, "Currency" %>
+  <%= f.text_field :currency %> /Year <br>
