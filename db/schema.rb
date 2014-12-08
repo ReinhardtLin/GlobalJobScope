@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204054348) do
+ActiveRecord::Schema.define(version: 20141208035112) do
+
+  create_table "add_follows_count_to_jobs", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -135,9 +140,9 @@ ActiveRecord::Schema.define(version: 20141204054348) do
     t.string   "employer"
     t.integer  "number"
     t.date     "deadline"
-    t.integer  "salary_min",      default: 0,     null: false
-    t.integer  "salary_max",      default: 0,     null: false
-    t.string   "currency",        default: "USD", null: false
+    t.integer  "salary_min",      default: 0,      null: false
+    t.integer  "salary_max",      default: 0,      null: false
+    t.string   "currency",        default: "USD",  null: false
     t.text     "requirement"
     t.text     "responsibility"
     t.text     "benefit"
@@ -150,6 +155,7 @@ ActiveRecord::Schema.define(version: 20141204054348) do
     t.integer  "type_id"
     t.integer  "position_id"
     t.integer  "employer_id"
+    t.string   "aasm_state",      default: "OPEN"
   end
 
   add_index "jobs", ["employer_id"], name: "index_jobs_on_employer_id"

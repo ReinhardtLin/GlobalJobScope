@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
-  before_action :set_job, :only => [ :show, :follower, :edit, :edit1, :edit2, :edit3, :update, :destroy]
+  before_action :set_job, :only => [ :show, :follower, :edit, :edit1, :edit2, :edit3, :update, :destroy, :hide]
 
   def index
     if params[:keyword]
@@ -21,6 +21,7 @@ class JobsController < ApplicationController
 
   def posting
     @jobs = current_user.jobs
+    @enable_post_new_job = true
 
     render :index
   end
@@ -73,6 +74,10 @@ class JobsController < ApplicationController
     @job.destroy
     flash[:alert] = "The job was successfully deleted"
     redirect_to posting_jobs_url
+  end
+
+  def hide
+    @job.terminate!
   end
 
   private

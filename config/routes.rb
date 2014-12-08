@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get :edit3
 
       get :follower
+      get :hide
     end
 
     resources :follows, :controller => 'job_follows'

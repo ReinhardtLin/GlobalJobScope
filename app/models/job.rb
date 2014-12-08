@@ -18,6 +18,16 @@ class Job < ActiveRecord::Base
 
   include PositionAssignment
   include EmployerAssignment
+  include AASM
+
+  aasm do
+    state :OPEN, :initial => true
+    state :CLOSE
+
+    event :terminate do
+      transitions :from => :OPEN, :to => :CLOSE
+    end
+  end
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
@@ -43,4 +53,5 @@ class Job < ActiveRecord::Base
   def self.located_with(name)
     Location.find_by_name!(name).jobs
   end
+
 end

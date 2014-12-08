@@ -10,6 +10,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'nested_form_fields'
 
+gem 'aasm'
 
 # Re-index:
 # bundle exec rake environment elasticsearch:import:all
