@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :following_jobs, :through => :follows, :source => :job
 
   has_many :comments
+  has_many :submissions
 
   has_many :livings
   has_many :living_countries, :through => :livings, :source => :country

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208035112) do
+ActiveRecord::Schema.define(version: 20141208065834) do
 
   create_table "add_follows_count_to_jobs", force: true do |t|
     t.datetime "created_at"
@@ -155,11 +155,13 @@ ActiveRecord::Schema.define(version: 20141208035112) do
     t.integer  "type_id"
     t.integer  "position_id"
     t.integer  "employer_id"
-    t.string   "aasm_state",      default: "OPEN"
+    t.string   "aasm_state",      default: "open"
+    t.integer  "submission_id"
   end
 
   add_index "jobs", ["employer_id"], name: "index_jobs_on_employer_id"
   add_index "jobs", ["position_id"], name: "index_jobs_on_position_id"
+  add_index "jobs", ["submission_id"], name: "index_jobs_on_submission_id"
   add_index "jobs", ["type_id"], name: "index_jobs_on_type_id"
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
@@ -264,6 +266,14 @@ ActiveRecord::Schema.define(version: 20141208035112) do
   add_index "stayings", ["location_id"], name: "index_stayings_on_location_id"
   add_index "stayings", ["user_id"], name: "index_stayings_on_user_id"
 
+  create_table "submissions", force: true do |t|
+    t.string   "aasm_state", default: "applying"
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "types", force: true do |t|
     t.integer  "job_id"
     t.string   "name"
@@ -294,11 +304,13 @@ ActiveRecord::Schema.define(version: 20141208035112) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.integer  "submission_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["gender_id"], name: "index_users_on_gender_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["submission_id"], name: "index_users_on_submission_id"
 
   create_table "visas", force: true do |t|
     t.integer  "user_id"

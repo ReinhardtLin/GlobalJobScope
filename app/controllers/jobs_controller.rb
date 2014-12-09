@@ -78,6 +78,8 @@ class JobsController < ApplicationController
 
   def hide
     @job.terminate!
+
+    redirect_to job_path(@job)
   end
 
   private

@@ -7,23 +7,29 @@
     <th>Photo</th>
     <th>Citizen of</th>
     <th>Location</th>
-    <th>Birthday</th>
-    <th>Gender</th>
     <th>Summary</th>
+    <th>Application</th>
     <th>Operation</th>
   </tr>
   <% @job.follows.each do |f| %>
+    <% submission = @job.find_by_submission(f.user) %>
   <tr>
     <td><%= link_to f.user.try(:username), user_path(f.user) %></td>
     <td><%= f.user.email %></td>
     <td><%= image_tag( f.user.logo.url(:thumb) ) %></td>
     <td><%= f.user.all_countries %></td>
     <td><%= f.user.all_locations %></td>
-    <td><%= f.user.birthday %></td>
-    <td><%= f.user.gender.try(:name) %></td>
     <td><%= f.user.summary %></td>
+    <td><%= submission.aasm_state %></td>
     <td>
       <%= link_to "Show Detail", user_path(f.user) %>
+      <% if submission.applying? %>
+        <%= link_to "Admit", admit_job_submission_path(@job, submission), :method => :patch %>
+        <%= link_to "Reject", reject_job_submission_path(@job, submission), :method => :patch %>
+      <% elsif submission.declined? %>
+        <%= link_to "Emphasize", emphasize_job_submission_path(@job, submission), :method => :patch %>
+        <%= link_to "Refuse", refuse_job_submission_path(@job, submission), :method => :patch %>
+      <% end %>
     </td>
   </tr>
   <% end %>

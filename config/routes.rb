@@ -25,11 +25,21 @@ Rails.application.routes.draw do
       get :edit3
 
       get :follower
-      get :hide
+      patch :hide
     end
 
     resources :follows, :controller => 'job_follows'
     resources :comments, :controller => 'job_comments'
+    resources :submissions, :controller => 'job_submissions' do
+      member do
+        patch :admit
+        patch :reject
+        patch :confirm
+        patch :decline
+        patch :emphasize
+        patch :refuse
+      end
+    end
   end
 
   root 'jobs#index'

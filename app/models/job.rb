@@ -15,22 +15,27 @@ class Job < ActiveRecord::Base
 
   has_many :follows
   has_many :comments
+  has_many :submissions
 
   include PositionAssignment
   include EmployerAssignment
   include AASM
 
   aasm do
-    state :OPEN, :initial => true
-    state :CLOSE
+    state :open, :initial => true
+    state :closed
 
     event :terminate do
-      transitions :from => :OPEN, :to => :CLOSE
+      transitions :from => :open, :to => :closed
     end
   end
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+
+  def display_status
+    self.aasm_state.upcase
+  end
 
   def as_indexed_json(options={})
     self.as_json( :include => [:position, :employer, :locations] )
@@ -38,6 +43,10 @@ class Job < ActiveRecord::Base
 
   def find_by_follow(user)
     self.follows.where( :user => user ).first
+  end
+
+  def find_by_submission(user)
+    self.submissions.where( :user => user ).first
   end
 
   def all_locations=(names)

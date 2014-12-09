@@ -1,9 +1,20 @@
 <p>Status</p>
-<%= @job.aasm_state %>
-<% if @job.aasm_state == 'OPEN' %>
-  <%= link_to "Close Job", hide_job_path(@job) %>
+<%= @job.display_status %>
+<% if @job.open? %>
+  <%= link_to "Close Job", hide_job_path(@job), :method => :patch %>
 <% end %>
 
+<p>Application (<%= @job.submissions.count %>)</p>
+<% if submission = @job.find_by_submission(current_user) %>
+    <%= submission.aasm_state %>
+    <% if submission.admitted? %>
+      <%= link_to "Confirm", confirm_job_submission_path(@job, submission), :method => :patch %>
+      <%= link_to "Decline", decline_job_submission_path(@job, submission), :method => :patch %>
+    <% end %>
+<% else %>
+  expecting
+  <%= link_to "Apply", new_job_submission_path(@job) %>
+<% end %>
 
 <p>Follows</p>
 <%= @job.follows_count %>
