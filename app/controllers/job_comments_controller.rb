@@ -27,7 +27,7 @@ class JobCommentsController < ApplicationController
   private
 
   def require_comment_destroyer!
-    unless @comment.can_modify_by?(current_user) or @job.can_modify_by?(current_user)
+    unless @comment.can_delete_by?(current_user) or @job.can_modify_by?(current_user)
       flash[:alert] = "Sorry! You don't have the authorization to change it!"
       redirect_to :back
     end

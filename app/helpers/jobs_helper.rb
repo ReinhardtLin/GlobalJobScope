@@ -10,4 +10,12 @@ module JobsHelper
       yield(location, classes[index.round])
     end
   end
+
+  def application_head(job)
+    if job.can_modify_by?(current_user)
+      false
+    else
+      true
+    end
+  end
 end

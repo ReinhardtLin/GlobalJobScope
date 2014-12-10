@@ -1,19 +1,24 @@
 <p>Status</p>
 <%= @job.display_status %>
-<% if @job.open? %>
+<% if @job.can_modify_by?(current_user) && @job.open? %>
   <%= link_to "Close Job", hide_job_path(@job), :method => :patch %>
 <% end %>
 
-<p>Application (<%= @job.submissions.count %>)</p>
-<% if submission = @job.find_by_submission(current_user) %>
-    <%= submission.aasm_state %>
-    <% if submission.admitted? %>
-      <%= link_to "Confirm", confirm_job_submission_path(@job, submission), :method => :patch %>
-      <%= link_to "Decline", decline_job_submission_path(@job, submission), :method => :patch %>
-    <% end %>
-<% else %>
-  expecting
-  <%= link_to "Apply", new_job_submission_path(@job) %>
+<p>Application</p>
+<% if @job.can_modify_by?(current_user) %>
+  <%= @job.submissions.count %>
+<% end %>
+<% unless @job.can_modify_by?(current_user) %>
+  <% if submission = @job.find_by_submission(current_user) %>
+      <%= submission.aasm_state %>
+      <% if submission.admitted? %>
+        <%= link_to "Confirm", confirm_job_submission_path(@job, submission), :method => :patch %>
+        <%= link_to "Decline", decline_job_submission_path(@job, submission), :method => :patch %>
+      <% end %>
+  <% else %>
+    expecting
+    <%= link_to "Apply", new_job_submission_path(@job) %>
+  <% end %>
 <% end %>
 
 <p>Follows</p>
@@ -28,9 +33,13 @@
   <% end %>
 <% end %>
 
-<h3><%= link_to "Followers", follower_job_path(@job) %></h3>
+<% if @job.can_modify_by?(current_user) %>
+  <h3><%= link_to "Follow List", follower_job_path(@job) %></h3>
+<% end %>
 
-<%= link_to "Edit", edit_job_path(@job) %>
+<% if @job.can_modify_by?(current_user) %>
+  <%= link_to "Edit", edit_job_path(@job) %>
+<% end %>
 
 <h3>Position</h3>
 <%= @job.position_name %>
@@ -52,7 +61,9 @@
 <p>Salary</p>
 <%= @job.salary_min %> ~ <%= @job.salary_max %> @ <%= @job.currency %>/Yr <br>
 
-<%= link_to "Edit", edit1_job_path(@job) %>
+<% if @job.can_modify_by?(current_user) %>
+  <%= link_to "Edit", edit1_job_path(@job) %>
+<% end %>
 
 <p>Requirement</p>
 <%= @job.requirement %>
@@ -60,7 +71,9 @@
 <p>Responsibility</p>
 <%= @job.responsibility %>
 
-<%= link_to "Edit", edit2_job_path(@job) %>
+<% if @job.can_modify_by?(current_user) %>
+  <%= link_to "Edit", edit2_job_path(@job) %>
+<% end %>
 
 <p>Benefit</p>
 <%= @job.benefit %>
@@ -68,7 +81,9 @@
 <p>Company Profile</p>
 <%= @job.company_profile %>
 
-<%= link_to "Edit", edit3_job_path(@job) %>
+<% if @job.can_modify_by?(current_user) %>
+  <%= link_to "Edit", edit3_job_path(@job) %>
+<% end %>
 
 <p>Suggestion</p>
 <%= @job.suggestion %>
@@ -78,8 +93,10 @@
   <% @job.comments.each do |comment| %>
   <li>
     <%= comment.content %>
-    <%= link_to comment.user.try(:username), job_path(comment) %>
-    <%= link_to 'Delete Comment', job_comment_path(@job, comment), :method => :delete %>
+    - by <%= comment.user.try(:username)%>
+    <% if @job.can_modify_by?(current_user) || comment.can_delete_by?(current_user) %>
+      <%= link_to 'Delete Comment', job_comment_path(@job, comment), :method => :delete %>
+    <% end %>
   </li>
   <% end %>
 </ol>

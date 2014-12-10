@@ -170,18 +170,9 @@ ActiveRecord::Schema.define(version: 20141208065834) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "level_id"
   end
 
-  add_index "languages", ["level_id"], name: "index_languages_on_level_id"
   add_index "languages", ["user_id"], name: "index_languages_on_user_id"
-
-  create_table "levels", force: true do |t|
-    t.integer  "language_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "livings", force: true do |t|
     t.integer  "user_id"

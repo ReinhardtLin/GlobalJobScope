@@ -23,6 +23,9 @@
     <th>Comments</th>
     <th>Poster</th>
     <th>Operation</th>
+    <% if application_head(@jobs[0]) %>
+      <th>Application</th>
+    <% end %>
   </tr>
   <% @jobs.each do |job| %>
   <tr>
@@ -54,9 +57,28 @@
       <% if job.can_modify_by?(current_user) %>
         <%= link_to "Edit Job", edit_job_path(job) %>
         <%= link_to "Follow List", follower_job_path(job) %>
+        <% if job.open? %>
+          <%= link_to "Close Job", hide_job_path(job), :method => :patch %>
+        <% else %>
+          <%= job.display_status %>
+        <% end %>
       <% end %>
       <%#= link_to "Delete Job", job_path(job), :method => :delete %>
     </td>
+    <% unless job.can_modify_by?(current_user) %>
+    <td>
+      <% if submission = job.find_by_submission(current_user) %>
+          <%= submission.aasm_state %>
+          <% if submission.admitted? %>
+            <%= link_to "Confirm", confirm_job_submission_path(job, submission), :method => :patch %>
+            <%= link_to "Decline", decline_job_submission_path(job, submission), :method => :patch %>
+          <% end %>
+      <% else %>
+        expecting
+        <%= link_to "Apply", new_job_submission_path(job) %>
+      <% end %>
+    </td>
+    <% end %>
   </tr>
   <% end %>
 </table>

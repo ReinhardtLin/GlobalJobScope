@@ -8,8 +8,10 @@
     <th>Citizen of</th>
     <th>Location</th>
     <th>Summary</th>
-    <th>Application</th>
     <th>Operation</th>
+    <% if application_head %>
+      <th>Application</th>
+    <% end %>
   </tr>
   <% @job.follows.each do |f| %>
   <tr>
@@ -19,6 +21,9 @@
     <td><%= f.user.all_countries %></td>
     <td><%= f.user.all_locations %></td>
     <td><%= f.user.summary %></td>
+    <td>
+      <%= link_to "Show Detail", user_path(f.user) %>
+    </td>
     <td>
       <% if submission = @job.find_by_submission(f.user) %>
         <%= submission.aasm_state %>
@@ -32,9 +37,6 @@
       <% else %>
         expecting
       <% end %>
-    </td>
-    <td>
-      <%= link_to "Show Detail", user_path(f.user) %>
     </td>
   </tr>
   <% end %>
