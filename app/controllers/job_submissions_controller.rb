@@ -1,15 +1,15 @@
 class JobSubmissionsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_job
-  before_action :find_submission, :only => [:admit, :reject, :confirm, :decline, :emphasize]
+  before_action :find_submission, :only => [:admit, :reject, :confirm, :decline, :emphasize, :refuse]
+  before_action :require_job_poster!, :only => [:admit, :reject, :emphasize, :refuse]
+  before_action :require_submission_applicant!, :only => [:confirm, :decline]
 
   def create
     @submission = @job.submissions.build
     @submission.user = current_user
 
     if @submission.save
-      # @submission.apply
-      # @submission.notify_followers
       redirect_to job_url( @job )
     else
       redirect_to :back
@@ -47,6 +47,20 @@ class JobSubmissionsController < ApplicationController
   end
 
   protected
+
+  def require_job_poster!
+    unless @job.can_modify_by?(current_user)
+      flash[:alert] = "Sorry! You don't have the authorization to change it!"
+      redirect_to :back
+    end
+  end
+
+  def require_submission_applicant!
+    unless @submission.can_modify_by?(current_user)
+      flash[:alert] = "Sorry! You don't have the authorization to change it!"
+      redirect_to :back
+    end
+  end
 
   def find_submission
     @submission = @job.submissions.find( params[:id] )

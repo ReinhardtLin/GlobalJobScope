@@ -2,6 +2,7 @@ class JobsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
   before_action :set_job, :only => [ :show, :follower, :edit, :edit1, :edit2, :edit3, :update, :destroy, :hide]
+  before_action :require_job_poster!, :only => [:follower, :edit, :edit1, :edit2, :edit3, :update, :destroy, :hide]
 
   def index
     if params[:keyword]
@@ -83,6 +84,13 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def require_job_poster!
+    unless @job.can_modify_by?(current_user)
+      flash[:alert] = "Sorry! You don't have the authorization to change it!"
+      redirect_to :back
+    end
+  end
 
   def job_params
     params.require(:job).permit(:position_name, :employer_name, :number, :deadline, :salary_min, :salary_max, :currency, :requirement, :responsibility, :company_profile, :suggestion, :all_locations, :type_id)

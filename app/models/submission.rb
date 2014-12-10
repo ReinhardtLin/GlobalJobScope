@@ -41,6 +41,10 @@ class Submission < ActiveRecord::Base
     end
   end
 
+  def can_modify_by?(user)
+    (self.user == user )
+  end
+
   def display_status
     self.aasm_state.upcase
   end

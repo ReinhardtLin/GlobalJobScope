@@ -51,9 +51,11 @@
     </td>
     <td>
       <%= link_to "Show Detail", job_path(job) %>
-      <%= link_to "Edit Job", edit_job_path(job) %>
-      <%= link_to "Followers", follower_job_path(job) %>
-      <%= link_to "Delete Job", job_path(job), :method => :delete %>
+      <% if job.can_modify_by?(current_user) %>
+        <%= link_to "Edit Job", edit_job_path(job) %>
+        <%= link_to "Follow List", follower_job_path(job) %>
+      <% end %>
+      <%#= link_to "Delete Job", job_path(job), :method => :delete %>
     </td>
   </tr>
   <% end %>

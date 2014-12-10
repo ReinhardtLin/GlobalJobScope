@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :authorize_user!, :only => [:edit, :edit1, :edit2, :edit3, :update]
 
   def index
     if params[:country]
@@ -46,6 +47,13 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize_user!
+    unless self == current_user
+      flash[:alert] = "Sorry! You don't have the authorization to change it!"
+      redirect_to :back
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :username, :birthday, :summary, :skill, :other_info, :gender_id, :all_countries, :all_eligibles, :all_locations, :logo, :all_languages, :speakings_attributes => [:id, :language_name, :name, :_destroy] )

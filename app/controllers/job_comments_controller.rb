@@ -2,6 +2,7 @@ class JobCommentsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_job
+  before_action :require_comment_destroyer!, :only => [:destroy]
 
   def create
     @comment = @job.comments.build( comment_params )
@@ -24,6 +25,13 @@ class JobCommentsController < ApplicationController
   end
 
   private
+
+  def require_comment_destroyer!
+    unless @comment.can_modify_by?(current_user) or @job.can_modify_by?(current_user)
+      flash[:alert] = "Sorry! You don't have the authorization to change it!"
+      redirect_to :back
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:content)
