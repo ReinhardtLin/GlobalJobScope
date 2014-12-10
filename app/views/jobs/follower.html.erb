@@ -31,8 +31,8 @@
           <%= link_to "Admit", admit_job_submission_path(@job, submission), :method => :patch %>
           <%= link_to "Reject", reject_job_submission_path(@job, submission), :method => :patch %>
         <% elsif submission.declined? %>
-          <%= link_to "Emphasize", emphasize_job_submission_path(@job, submission), :method => :patch %>
-          <%= link_to "Refuse", refuse_job_submission_path(@job, submission), :method => :patch %>
+          <%= link_to "Admit", emphasize_job_submission_path(@job, submission), :method => :patch %>
+          <%= link_to "Withdraw", refuse_job_submission_path(@job, submission), :method => :patch %>
         <% end %>
       <% else %>
         expecting
