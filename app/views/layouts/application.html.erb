@@ -5,26 +5,35 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+<link href="file:///D|/dropbox/gjs/app/assets/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-<%= link_to 'GJS Logo', root_path %> ||
-
+<header>
+<div class="countainer">
+<%= link_to 'GJS Logo', root_path,:class => "logo" %>
 <% if current_user %>
-  <%= link_to 'My Follow', following_jobs_path %> |
-  <%= link_to 'My Post', posting_jobs_path %> |
-  <%= link_to 'My Profile', user_path(current_user) %> |
-  <%= link_to('My Setting', edit_registration_path(:user)) %> |
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <ul class="main-nav">
+    <li><%= link_to 'My Follow', following_jobs_path %></li>
+    <li><%= link_to 'My Post', posting_jobs_path %></li>
+    <li><%= link_to 'My Profile', user_path(current_user) %></li>
+    <li><%= link_to('My Setting', edit_registration_path(:user)) %></li>
+    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+  </ul>
 <% else %>
-  <%= link_to('Sign Up', new_registration_path(:user)) %> |
-  <%= link_to('Login', new_session_path(:user)) %>
-<% end %> <br>
-
-
+ <ul class="main-nav">
+    <li><%= link_to('Sign Up', new_registration_path(:user)) %></li>
+    <li><%= link_to('Login', new_session_path(:user)) %></li>
+  </ul>
+<% end %>
+  <div class="clearfix"></div>
+</div>
+</header>
+<div class="countainer">
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
 <%= yield %>
-
+</div>
+<div class="index-bg"></div>
 </body>
 </html>

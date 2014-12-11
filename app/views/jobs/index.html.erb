@@ -1,9 +1,14 @@
-<%= form_tag root_path, :method => :get do %>
+<div clss="countainer">
+  <div class="s-box">
+    <div class="srchBox">
+      <%= form_tag root_path, :method => :get do %>
+      <%= text_field_tag "keyword", nil, {:placeholder => "Job Title, Keywords, or Company"} %>
+      <%= submit_tag "Search", :class => "search-button" %>
+	  <% end %>
+	</div>
+  </div>
+</div>
 
-  <%= text_field_tag "keyword" %>
-  <%= submit_tag "Search" %>
-
-<% end %>
 
 <% if @enable_post_new_job %>
   <%= link_to 'Post New Job', new_job_path %>
@@ -84,3 +89,21 @@
 </table>
 
 <% end %>
+
+<script>
+    // window.onload = function(){
+    //   alert('onload done')
+    // }
+
+    // $(document).ready(function(){
+    //   alert('ready done')
+    // })
+
+    // $(function(){
+    //   alert('ready done')
+    // })
+
+    $(function(){
+       alert("Let's Go!");
+    })
+  </script>
