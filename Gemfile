@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'nested_form_fields'
 
 gem 'aasm'
+gem 'bootstrap-sass', '~> 3.2.0'
 
 # Re-index:
 # bundle exec rake environment elasticsearch:import:all
