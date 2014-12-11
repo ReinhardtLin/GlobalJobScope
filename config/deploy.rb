@@ -1,6 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.3.3'
 
+`ssh-add`
+
 set :application, 'gjs'
 set :repo_url, 'git@github.com:ReinhardtLin/GlobalJobScope.git'
 
