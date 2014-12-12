@@ -56,6 +56,9 @@ body{
   border: 0; 
   cursor: pointer;
 	}
+.flatbutton a,.flatbutton a:hover{
+	color:#FFF;
+	}
 .flatbutton:active{
   top: 1px;
   outline: none;
@@ -64,6 +67,9 @@ body{
 }
 .inblock{
   display:inline-block;	
+}
+.text-shadow{
+  text-shadow:1px 1px 1px #666;	
 }
 /*hyperlink*/
 a:link {
@@ -129,7 +135,6 @@ header .countainer{
   top:-2.5%;
   left:-2.5%;
   z-index:-1;
-  background-color:red;
 	}
   /*searchbox*/
 .s-box{
@@ -516,12 +521,184 @@ input[value="Unfollow"]{
   width:100%;
 	}	
 	
+/*fllower-list*/	
+.follow-list h2{
+	width:90%;
+	max-width:800px;	
+	margin: 20px auto 0px;		
+	}
+.follow-box{
+	width:90%;
+	max-width:800px;
+	padding:15px 25px;
+	background:#FFF;
+	margin:auto;
+	border-radius:10px;
+	margin-top:15px;
+	position:relative;	
+	}	
+.follow-box .ctrlbar{
+	text-align:right;
+	}	
+.photo{
+	width:100px;
+	height:100px;
+	}	
+.basic{
+	max-width:620px;
+	width:100%;
+	}
+.basic h1{
+	margin:0;
+	}
+.loaction{
+	color:#333;
+	}	
+.summary{
+	margin-top:10px;
+	}
+.app{
+	font-size:22px;
+	}
+.app h3{
+	margin:0 0 5px 0;
+	}
+.app div{
+	font-size:25px;	
+	}	
+.green{
+    background: #16a085;  
+    border-bottom: 2px solid #14947b;
+    color: #FFF;
+	border-radius:5px;	
+	}
+.showd.green{
+	margin:10px auto;
+	display:inline-block;
+	padding: 2px 8px;
+	}
+.email-icon{
+  width:30px;
+  height:30px;
+  font-size:0;
+  background-image:url(mail.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+  display: inline-block;
+  vertical-align:middle;
+  margin-right:3px;
+	}	
 	
+.nephritis{
+  background: #27ae60;
+  border-bottom: 2px solid #219d55;
+  color:#FFF;
+  border-radius:5px;
+  font-size:20px;
+	}	
+.red{
+  background: #c0392b;
+  border-bottom: 2px solid #b53224;	
+  color:#FFF;
+  border-radius:5px;
+  font-size:20px;
+	}
+.app .red{
+  margin-top:3px;	
+	}
 	
-	
-	
-	
-	
+/*user-show*/
+.edit-box{
+	border:3px groove #DDD;
+	padding:10px 15px;
+	border-radius:5px;
+	position:relative;
+	margin-top:15px;
+	}
+.edit-box .edit{
+	position:absolute;
+	top:10px;
+	right:10px;
+	}
+.edit-box .edit:active{
+	top:11px;
+	}
+.edit-box h2{
+	margin:0 0 5px 0;
+	font-size:30px;
+	}
+.summary-photo{
+	width:300px;
+	height:300px;
+	}
+.basic-edit.left{
+	margin-left:10px;
+	max-width:450px;
+	}
+
+.basic-edit h3{
+	margin:5px 0 3px 0;
+	}
+.detial-box{
+	width:32%;
+	display:inline-block;
+	vertical-align:top;
+	min-width: 150px;
+	}
+#language{
+	border-spacing: 0;
+	width: 50%;
+    border: 1px solid #666;
+	main-width:300px;
+	}
+#language th,#language td{
+	width:50%;
+	margin:0;
+	padding:5px 8px;
+	border-left:1px solid #666;
+	}
+#language th{
+	text-align:left;
+	border-bottom:2px solid #666;
+	}
+#language tr:nth-child(even){
+	background:#999;
+	color:#EEE;
+	}
+
+/*fileuploader*/
+.upload-file{
+	margin-top:15vh;
+	background-color:rgba(204,102,0,0.6);
+	}
+.upload-file h4{
+	margin:5px 0;
+	}
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+    background: #666;
+    border-bottom: 2px solid #333;	
+    color:#FFF;
+    border-radius:5px;
+   display: inline-block;
+   padding: 5px;
+}
+.fileUpload:active {
+  top:1px;
+}
+.fileUpload input[type="file"]{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
 
 /*   */
 .before_login_wrapper,

@@ -1,7 +1,0 @@
-<%= form_for @education, :url => user_educations_path(@user) do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-
-  <%= f.submit "Add Education" %>
-<% end %>
-
-<%= link_to 'Exit w.o. Saving', edit2_user_path(@user) %>

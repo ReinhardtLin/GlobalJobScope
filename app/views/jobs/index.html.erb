@@ -42,15 +42,13 @@
     </div>
 <% if @enable_post_new_job %>
 <div class="newjob">
-<div class="flatbutton">
-  <%= link_to 'Post New Job', new_job_path %>
-</div>
+  <div class="flatbutton">
+    <%= link_to 'Post New Job', new_job_path %>
+  </div>
 </div>
 <% end %>
+
 <% @jobs.each do |job| %>
-
-
-
 	<div class="jobbox">
         <div class="jobbox-head">
           <h1 class="position left"><%= job.position_name %></h1>

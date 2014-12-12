@@ -1,3 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<script type="text/javascript" src="jquery-2.0.3.js"></script>
+
+<link href="application.css" rel="stylesheet" type="text/css" />
+
+</head>
+ <body>
+<header>
+
+  
+<a class="logo" href="/">GJS Logo</a>
+  <ul class="main-nav">
+    <li><a href="/jobs/following">My Follow</a></li>
+    <li><a href="/jobs/posting">My Post</a></li>
+    <li><a href="/users/1">My Profile</a></li>
+    <li><a href="/users/edit">My Setting</a></li>
+    <li><a data-method="delete" href="/users/sign_out" rel="nofollow">Logout</a></li>
+  </ul>
+  <div class="clearfix"></div>
+</header>
+<div style="height:60px;"></div>
+
+<p style="color: green"></p>
+<p style="color: red"></p>
+
 <div class="search-result">
   <div class="countainer">
    <div class="jobbox">
@@ -126,24 +155,18 @@
 
 <!--edit section end-->
 
+  <a href="/users/1/edit">Edit</a>
 
-
-
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit_user_path(current_user) %>
-<% end %>
-
-<h2><%= @user.username %></h2>
+<h2>Reinhardt Lin</h2>
 
 <h3>Photo</h3>
-<%= link_to image_tag( @user.logo.url(:medium) ), @user.logo.url %>
+<a href="/system/users/logos/000/000/001/original/hanzawanaoki.jpg?1418357968"><img alt="Hanzawanaoki" src="/system/users/logos/000/000/001/medium/hanzawanaoki.jpg?1418357968"></a>
 
 <h3>Summary</h3>
-<%= @user.summary %>
+以牙還牙，加倍奉還
 
 <table border="1">
-  <tr>
+  <tbody><tr>
     <th>Citizen of</th>
     <th>Countries eligible to work in</th>
     <th>Location</th>
@@ -151,21 +174,19 @@
     <th>Gender</th>
   </tr>
   <tr>
-    <td><%= @user.all_countries %></td>
-    <td><%= @user.all_eligibles %></td>
-    <td><%= @user.all_locations %></td>
-    <td><%= @user.birthday %></td>
-    <td><%= @user.gender.try(:name) %></td>
+    <td>Taiwan</td>
+    <td>Taiwan, Hong Kong, China</td>
+    <td>Taipei</td>
+    <td>1983-07-26</td>
+    <td>Male</td>
   </tr>
-</table>
+</tbody></table>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit1_user_path(current_user) %>
-<% end %>
+  <a href="/users/1/edit1">Edit</a>
 
 <h3>Experience</h3>
 <table border="1">
-  <tr>
+  <tbody><tr>
     <th>Position</th>
     <th>Employer</th>
     <th>Current</th>
@@ -174,26 +195,22 @@
     <th>Period</th>
     <th>Description</th>
   </tr>
-  <% @user.experiences.each do |experience| %>
   <tr>
-    <td><%= experience.position_name %></td>
-    <td><%= experience.employer_name %></td>
-    <td><%= experience.current.try(:name) %></td>
-    <td><%= experience.all_locations %></td>
-    <td><%= experience.salary %> USD/Yr</td>
-    <td><%= experience.from %> ~ <%= experience.to %></td>
-    <td><%= experience.description %></td>
+    <td>Project Manager</td>
+    <td>ZyXEL Communication</td>
+    <td>No</td>
+    <td>Hsin-Chu Science Park</td>
+    <td>28000 USD/Yr</td>
+    <td>2007-11-01 ~ 2009-10-11</td>
+    <td>I was a good PM!</td>
   </tr>
-  <% end %>
-</table>
+</tbody></table>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit2_user_path(current_user) %>
-<% end %>
+  <a href="/users/1/edit2">Edit</a>
 
 <h3>Education</h3>
 <table border="1">
-  <tr>
+  <tbody><tr>
     <th>Degree</th>
     <th>Institute</th>
     <th>Current</th>
@@ -202,47 +219,55 @@
     <th>Period</th>
     <th>Description</th>
   </tr>
-  <% @user.educations.each do |education| %>
   <tr>
-    <td><%= education.degree_name %></td>
-    <td><%= education.institute_name %></td>
-    <td><%= education.current.try(:name) %></td>
-    <td><%= education.all_locations %></td>
-    <td><%= education.all_professions %></td>
-    <td><%= education.from %> ~ <%= education.to %></td>
-    <td><%= education.description %></td>
+    <td>MBA</td>
+    <td>ESMT</td>
+    <td>No</td>
+    <td>Berlin</td>
+    <td>MBA, Social Business</td>
+    <td>2013-01-14 ~ 2013-12-19</td>
+    <td>I was a good student!</td>
   </tr>
-  <% end %>
-</table>
+</tbody></table>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit3_user_path(current_user) %>
-<% end %>
+  <a href="/users/1/edit3">Edit</a>
 <h3>Language</h3>
 <table>
-  <tr>
+  <tbody><tr>
     <th>Language</th>
     <th>Level</th>
   </tr>
-  <% @user.speakings.each do |speaking| %>
   <tr>
-    <td><%= speaking.language_name %></td>
-    <td><%= speaking.try(:name) %></td>
+    <td>Chinese</td>
+    <td>Native</td>
   </tr>
-  <% end %>
-</table>
+  <tr>
+    <td>Taiwanese</td>
+    <td>Native</td>
+  </tr>
+  <tr>
+    <td>English</td>
+    <td>Proficient</td>
+  </tr>
+</tbody></table>
 
 <h3>Skill</h3>
-<%= @user.skill %> <br>
+Mouth gun! <br>
 
 <h3>Other Info</h3>
-<%= @user.other_info %> <br>
+CAO of GJS <br>
 
-<%= link_to 'Home', jobs_path %>
+<a href="/jobs">Home</a>
     </div>
   </div>
-</div>
-
+</div> 
+ 
 <script>
   $(".search-result").fadeIn(500);
 </script>
+
+<div class="index-bg"></div>
+
+
+</body>
+</html>

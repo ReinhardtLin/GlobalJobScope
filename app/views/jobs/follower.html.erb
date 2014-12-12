@@ -1,4 +1,58 @@
-<h3>Follow List</h3>
+<div class="search-result">
+  <div class="countainer follow-list">
+
+
+<h2>Follow List</h2>
+
+<!--Follow list start-->
+  <% @job.follows.each do |f| %>
+  <div class="follow-box">
+    <div class="ctrlbar">
+     <div class="flatbutton green showd"><%= link_to "Show Detail", user_path(f.user) %></div>
+    </div>
+    <div class="photo left"><%= image_tag( f.user.logo.url(:thumb) ) %></div>
+    <div class="basic right">
+       <div class="left">
+        <h1><%= link_to f.user.try(:username), user_path(f.user) %></h1>
+        <div class="location">
+          <span><%= f.user.all_locations %></span>,
+          <span><%= f.user.all_countries %></span>
+        </div>
+        <div class="email">
+          <span class="email-icon"></span>
+          <span><%= f.user.email %></span>
+        </div>
+       </div>
+       <% if submission = @job.find_by_submission(f.user) %>
+       <div class="app right">
+          <!-- <div>expecting</div>
+          <div class="flatbutton nephritis">Admit</div>
+          <div class="flatbutton red">Reject</div> -->
+
+
+        <%= submission.aasm_state %>
+        <% if submission.applying? %>
+          <div class="flatbutton nephritis"><%= link_to "Admit", admit_job_submission_path(@job, submission), :method => :patch %></div>
+          <div class="flatbutton red"><%= link_to "Reject", reject_job_submission_path(@job, submission), :method => :patch %></div>
+        <% elsif submission.declined? %>
+          <div class="flatbutton nephritis"><%= link_to "Admit", emphasize_job_submission_path(@job, submission), :method => :patch %></div>
+          <div class="flatbutton red"><%= link_to "Withdraw", refuse_job_submission_path(@job, submission), :method => :patch %></div>
+        <% end %>
+      <% else %>
+        expecting
+       </div>
+      <% end %>
+       <div class="clearfix"></div>
+    </div>
+  </div>
+    <div class="clearfix"></div>
+  <div class="follow-bottom">
+  <div class="summary"><%= f.user.summary %></div>
+  </div>
+  <% end %>
+<!--Follow list end-->
+
+
 <% if @job.follows.any? %>
 <table border="1">
   <tr>
@@ -40,3 +94,9 @@
   <% end %>
 </table>
 <% end %>
+  </div>
+</div>
+
+<script>
+  $(".search-result").fadeIn(500);
+</script>

@@ -1,9 +1,0 @@
-<%= render "menu" %>
-
-<%= form_for @job, :url => job_path(@job), :method => :patch do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-
-  <%= f.submit "Save Change" %>
-<% end %>
-
-<%= link_to 'Exit w.o. Saving', job_path(@job) %> <br>

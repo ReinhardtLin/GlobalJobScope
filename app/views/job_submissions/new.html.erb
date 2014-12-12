@@ -1,8 +1,20 @@
+<div class="countainer"> 
+  <div class="signup upload-file">
+  
+  
 <%= form_for Submission.new, :url => job_submissions_path(@job) do |f| %>
 
   <%= link_to "View My Profile", user_path(current_user) %> <br>
   Upload Files (CV or Cover Letter) <br>
-  <%= f.file_field :logo %> <br>
-
+  <div>
+   <h4>Upload Files (CV or Cover Letter)</h4>
+    <div class="fileUpload btn btn-primary">
+      <span>Upload</span>
+      <%= f.file_field :logo %> <br>
+    </div>
+  </div>  
   <%= f.submit "Confirm to Apply" %>
 <% end %>
+  <div class="clearfix"></div>
+  </div>
+</div>
