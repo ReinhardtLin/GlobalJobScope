@@ -3,9 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>無標題文件</title>
+<script type="text/javascript" src="jquery-2.0.3.js"></script>
+
 <link href="application.css" rel="stylesheet" type="text/css" />
+
 </head>
-<header style="height:60px;">
+<div style="height:60px;"></div>
+<header>
 </header>
 <body>
 <div class="index-bg"></div>
@@ -15,11 +19,158 @@
        <form accept-charset="UTF-8" action="/" method="get"><div style="display:none"><input name="utf8" type="hidden" value="✓"></div>
 
   <input id="keyword" name="keyword" type="text">
-  <input name="commit" type="submit" class="search-button" value="Search">
+  <input name="commit" type="submit" class="search-button flatbutton" value="Search">
 
   </form>  
     </div>
   </div>
 </div>
+<div class="search-result">
+  <div class="countainer"> 
+    <div class="lighter">
+      <form class="searchform">
+	    <input type="text" id="keyword1"><input class="searchtop flatbutton" type="button" value="Search">
+      </form>
+    </div>
+    <div class="newjob">
+<div class="flatbutton">
+  add new
+  </div>
+</div>
+      <div class="jobbox">
+        <div class="jobbox-head">
+          <h1 class="position left">CTO</h1>
+          <div class="detail01 right">
+            <span class="employer">GTS</span>
+            <span class="location">Taipei,Beijing</span>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="jobbox-body">
+          <div class="detail02 left">
+            <h3>Salary</h3><span class="salary">19000 ~ 22000 @ USD/Yr</span>
+            <div><h4 class="inblock">Type</h4><span class="type">Part-Time</span></div>
+            <div><h4 class="inblock">Number</h4><span class="number">1</span></div>
+          </div>
+          <div class="detail03 right">           
+            <h4>Deadline</h4><div class="deadline">2014-12-31</div>
+            <h4>Poster</h4><div class="poster">Reinhardt Lin</div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="jobbox-footer">
+          <div class="detail04 left">
+            <div class="comments">
+              <span class="comments-icon">comments</span>
+              <span class="comment">0</span>
+            </div>
+            <div class="follows">
+              <input name="commit" type="submit" value="Follow">
+              <span class="follow">0</span>
+            </div>
+            <div class="showdetail flatbutton">Deatils</div> 
+          </div>         
+          <div class="application right">
+            <h4>Application</h4>
+            <div class="status">Expecting</div>
+            <div>
+              <div class="apply flatbutton">Apply</div>
+            </div>
+          </div>
+          <div class="clearfix"></div>          
+        </div>
+      </div>
+      
+      
+      <div class="jobbox">
+        <div class="jobbox-head">
+          <h1 class="position left">CTO</h1>
+          <div class="detail01 right">
+            <span class="employer">GTS</span>
+            <span class="location">Taipei,Beijing</span>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="jobbox-body">
+          <div class="detail02 left">
+            <h3>Salary</h3><span class="salary">19000 ~ 22000 @ USD/Yr</span>
+            <div><h4 class="inblock">Type</h4><span class="type">Part-Time</span></div>
+            <div><h4 class="inblock">Number</h4><span class="number">1</span></div>
+          </div>
+          <div class="detail03 right">           
+            <h4>Deadline</h4><div class="deadline">2014-12-31</div>
+            <h4>Poster</h4><div class="poster">Reinhardt Lin</div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="jobbox-footer">
+          <div class="detail04 left">
+            <div class="comments">
+              <span class="comments-icon">comments</span>
+              <span class="comment">0</span>
+            </div>
+            <div class="follows">
+              <input name="commit" type="submit" value="Unfollow">
+              <span class="follow">0</span>
+            </div>
+            <div class="showdetail flatbutton">Deatils</div> 
+          </div>         
+          <div class="application right">
+            <h4>Application</h4>
+            <div class="status">Expecting</div>
+            <div>
+              <div class="apply flatbutton">Apply</div>
+            </div>
+          </div>
+          <div class="clearfix"></div>          
+        </div>
+      </div>
+    
+    <table border="1">
+  <tbody><tr>
+    <th>Position</th>
+    <th>Employer</th>
+    <th>Type</th>
+    <th>Number</th>
+    <th>Location</th>
+    <th>Salary</th>
+    <th>Deadline</th>
+    <th>Follows</th>
+    <th>Comments</th>
+    <th>Poster</th>
+    <th>Operation</th>
+      <th>Application</th>
+  </tr>
+  <tr>
+    <td>cto</td>
+    <td>GJS</td>
+    <td>Part-Time</td>
+    <td>1</td>
+    <td><a href="/locations/Taipei">Taipei</a>, <a href="/locations/Beijing">Beijing</a></td>
+    <td>19000 ~ 22000 @ USD/Yr</td>
+    <td>2014-12-31</td>
+    <td>
+      1
+        <form accept-charset="UTF-8" action="/jobs/2/follows" class="new_follow" id="new_follow" method="post"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="kXb7E7d9uZd84oDkMbxDTwvi6JoghFexB0XVT1XRsb4="></div>
+          <input name="commit" type="submit" value="Follow">
+</form>    </td>
+    <td>0</td>
+    <td>
+      <a href="/users/1">Reinhardt Lin</a>
+    </td>
+    <td>
+      <a href="/jobs/2">Show Detail</a>
+    </td>
+    <td>
+        expecting
+        <a href="/jobs/2/submissions/new">Apply</a>
+    </td>
+  </tr>
+</tbody></table>
+  </div>
+</div>
+<script>
+  $(".search-result").fadeIn(500);
+</script>
 </body>
 </html>

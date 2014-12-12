@@ -47,6 +47,24 @@ body{
 .clearfix{
   clear:both
 }
+.flatbutton{
+  position: relative;
+  vertical-align: top;  
+  padding: 0;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 0; 
+  cursor: pointer;
+	}
+.flatbutton:active{
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.inblock{
+  display:inline-block;	
+}
 /*hyperlink*/
 a:link {
 	text-decoration: none;
@@ -65,6 +83,10 @@ a:active {
 header{
   background-color:#F26E1A;
   height:60px;
+  position:fixed;
+  top:0;
+  width: 100%;
+  z-index:999;
 	}
 header .countainer{
   padding:20px 0;
@@ -76,6 +98,7 @@ header .countainer{
   background-image:url(logo.png);
   background-size:cover;
   margin-left:15px;
+  float:left;
     }
 .main-nav {
   color:#FFF;
@@ -106,6 +129,7 @@ header .countainer{
   top:-2.5%;
   left:-2.5%;
   z-index:-1;
+  background-color:red;
 	}
   /*searchbox*/
 .s-box{
@@ -116,7 +140,7 @@ div.srchBox {
   display: inline-block;
   position: relative;
   padding: 28px;
-  z-index: 100;
+  z-index: 1;
   border-radius: 8px;
   background-image: -webkit-linear-gradient(200deg, rgba(242,110,26,0.7) 0%,rgba(247,147,30,0.7) 100%);
   background-image: -moz-linear-gradient(200deg, rgba(242,110,26,0.7) 0%,rgba(247,147,30,0.7) 100%);
@@ -127,15 +151,8 @@ div.srchBox {
   max-width:550px;
   width:100%;
 }
+
 /* search */
-.search_wrapper{
-  width: 500px;
-  position: absolute;
-  top: 125px;
-  display: inline-block;
-  left: 37%;
-  margin-top: 35px;
-}
 #keyword{
   margin: auto;
   display:block;
@@ -154,38 +171,357 @@ div.srchBox {
   width:100%;
 }
 .search-button{
-  margin-top:15px;
-  position: relative;
-  vertical-align: top;
+  background: #1abc9c;
+  border-bottom: 2px solid #12ab8d;
+  margin-top: 15px;
   width: 100%;
   height: 40px;
-  padding: 0;
   font-size: 22px;
-  color: white;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  background: #1abc9c;
-  border: 0;
-  border-bottom: 2px solid #12ab8d;
-  cursor: pointer;
   border-radius:7px;
+  color: white;
 }
-.search-button:active{
-  top: 1px;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.search{
+
+/*.search{
   padding: 0.5em;
   background-color: rgba(242, 110, 26, .9);
   border-radius: 5px;
   border-style: none;
   cursor: pointer;
+}*/
+
+/*search-result*/
+.search-result{
+	background-color:#EEE;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:5;
+	display:none;
+	padding-top: 60px;
+	overflow-y:auto;
+	}
+
+.searchtop, .searchtop:hover {
+    left: -8px;
+    color: #FFF;
+    cursor: pointer;
+    background: #e67e22;
+    border-bottom: 2px solid #da751c;
+    padding: 7px;
+    margin-top: 2px;
+    font-size: 14px;
 }
-.search:hover{
-  background-color: rgba(242, 110, 26, 1);
+#keyword1 { 
+	padding:6px 15px 6px 30px;
+	margin:3px; 
+	background:url(search.png) no-repeat 8px 6px; 
+	background-color:#FFF;
 }
+.lighter{
+	width:90%;
+	max-width:800px;
+	text-align:right;
+	padding:10px 25px;
+	margin: auto;
+}
+
+/*jobbox*/
+.newjob{
+	width:90%;
+	max-width:800px;
+	margin:auto;
+	position: relative;
+	}
+.newjob .flatbutton{
+  background: #e74c3c;
+  border-bottom: 2px solid #db4334;
+  color: #FFF;
+  max-width:120px;
+  border-radius:20px;
+	}
+.newjob .flatbutton a{
+  color:#FFF;	
+	}
+.jobbox{
+	width:90%;
+	max-width:800px;
+	padding:15px 25px;
+	background:#FFF;
+	margin:auto;
+	border-radius:10px;
+	margin-top:15px;
+	}
+.jobbox .flatbutton a,.jobbox .flatbutton a:hover{
+	color:#FFF;
+	}
+div.jobbox:nth-child(odd){
+	background:#DDD;
+	}
+.jobbox h2,.jobbox h3,.jobbox h4{
+  color:#004687;	
+	}
+.jobbox-head{
+	border-bottom: 2px solid #000;
+	}
+.position{
+	margin:0;
+	font-size:40px;
+	color:#004687;
+	}
+.detail01.right {
+  margin-top: 25px;
+}
+.detail02{
+  font-size:18px;	
+	}
+.detail02 h3{
+  margin-bottom:10px;
+  }
+.salary{
+  font-size:30px;	
+  }
+.detail02 h4{
+  margin:10px 10px 0px 0px;	
+  width:65px;
+	}
+.employer{
+  font-size: 22px;
+  margin-right: 10px;
+  color:#004687;	
+	}
+.detail03{
+  margin-top:15px;
+  border-radius:5px;	
+  background:#CCC;
+  padding:5px 20px 15px 20px;	
+	}
+.detail03 h4{
+  margin:10px 10px 0px 0px;	
+	}
+.jobbox-footer {
+  font-size: 20px;
+  color: #666;
+  margin-top: 25px;
+  position:relative;
+}
+.detail04{
+  position:absolute;
+  bottom:0;	
+	}
+.comments-icon{
+  width:30px;
+  height:30px;
+  font-size:0;
+  background-image:url(comment.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+  display: inline-block;
+  vertical-align:middle;	
+	}
+input[value="Follow"]{
+  width: 30px;
+  height: 30px;
+  background-image: url(unfollow.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 0px;
+	}
+input[value="Unfollow"]{
+  width: 30px;
+  height: 30px;
+  background-image: url(follow.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 0px;
+	}
+.comments,.follows{
+  margin-right:15px;
+  display:inline-block;
+	}
+.showdetail{
+	background: #e67e22;
+    border-bottom: 2px solid #da751c;
+    color: #FFF;
+    display: inline-block;
+    padding: 3px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+	}
+.application{
+	text-align:right;
+	}
+.application h4{
+	margin:0;
+	color:#900;
+	}
+.status{
+	color:#000;
+	font-weight:bold;
+	}
+.apply{
+	margin-top:10px;
+    background: #16a085;  
+    border-bottom: 2px solid #14947b;
+    color: #FFF;
+    padding: 3px 20px;
+    font-size: 25px;
+	min-width:120px;
+	float:right;
+	border-radius:5px;
+	margin-left:5px;
+	}
+/*singup login*/
+.signup{
+  position: relative;
+  padding: 10px 28px;
+  z-index: 1;
+  border-radius: 8px;
+  background-color:rgba(220,220,220,.8);
+  box-shadow: rgba(0,0,0,0.15) 1px 1px 5px;
+  width:100%;
+  box-sizing:border-box;
+  max-width:350px;
+  width:100%;
+  margin:3vh auto 0;
+	}
+.signup label{
+  font-weight:bold;	
+	}
+.signup h2{
+  margin:0 0 10px 0;	
+  color:#333;
+	}
+.signup input[type='text'],.signup input[type='email'],.signup input[type='password']{
+  margin: auto;
+  display:block;
+  height:40px;
+  display: block;
+  margin: 8px auto;
+  border: none;
+  border-radius: 4px;
+  background-color: #FFF;
+  color: #333;
+  font-size: 18px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  transition: all 0.5s;
+  padding:0 15px;
+  width:100%;
+	}
+.signup [type="submit"],singup [type="submit"]:hover{
+  position: relative;
+  vertical-align: top;  
+  padding: 5px 15px;;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 0; 
+  cursor: pointer;
+  color:#FFF !important;
+  background: #1abc9c;
+  border-bottom: 2px solid #12ab8d;
+  margin-top: 15px;
+  height: 40px;
+  font-size: 22px;
+  float:right;
+	}
+.signup [type="submit"]:active{
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  }	
+
+	
+/*show*/	
+
+.edit.flatbutton{
+  background: #e74c3c;
+  border-bottom: 2px solid #db4334;
+  color: #FFF;
+  padding:1px 10px;
+  border-radius:20px;
+  float:right;
+	}
+.edit.flatbutton a{
+  color:#FFF;	
+	}
+	
+.comments-box{
+	width:90%;
+	max-width:800px;
+	padding:15px 25px;
+	background:#FFF;
+	margin:auto;
+	border-radius:10px;
+	margin-top:15px;
+	}
+
+.scroll-comment{
+	overflow-y:scroll;
+	height:250px;
+	}
+
+.scroll-comment ol{
+	list-style: none;
+	background:#CCC;
+	box-shadow:0 0 3px #333 inset;
+	padding:10px 10px;
+	min-height:250px;
+	border-radius:10px;
+	}
+.scroll-comment ol li{
+	background:rgba(255,51,0,1);
+	color:#FFF;
+	width: 70%;
+	position:relative;
+	padding:5px 5px;
+	border-radius:8px;
+	}	
+.scroll-comment ol li .squ-point{
+	width:15px;
+	height:15px;
+	background:black;
+	position:absolute;
+	transform:rotate(45deg);
+	left:-7px;
+	top:7px;
+	background:rgba(255,51,0,1);
+	z-index:-1;
+	left: -5px;
+    top: 12px;
+	}
+.comment-area textarea{
+  min-height:150px;
+  display: block;
+  margin: 8px auto;
+  border: none;
+  border-radius: 4px;
+  background-color: #eee;
+  color: #333;
+  font-size: 18px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  transition: all 0.5s;
+  padding:0 15px;
+  width:100%;
+	}	
+	
+	
+	
+	
+	
+	
+	
 
 /*   */
 .before_login_wrapper,
@@ -200,47 +536,13 @@ div.srchBox {
   opacity: 0.7;
   position: relative;
 }
-.logo{
-  float: left;
-}
-/*   */
-
-
-/* my following job list */
-.unfollow, .follow{
-  border-style: none;
-  background-color: #8af;
-  color: #fff;
-}
-
-/*   */
 
 
 
 
 
-/* 登入前的nav */
-.before_login{
-  float: right;
-  margin-right: 50px;
-  margin-top: 21px;
-}
-.signup{
-  color: white;
-  margin-right: 10px;
-  text-decoration: none;
-}
-.signup:hover{
-  text-decoration: underline;
-}
-.login{
-  color: 666;
-  text-decoration: none;
-}
-.login:hover{
-  text-decoration: underline;
-}
-/*   */
+
+
 
 
 /* 登入後的nav */
@@ -253,18 +555,9 @@ div.srchBox {
   margin-right: 60px;
   color: white;
 }
-.followingjoblist,
-.joblist, .newjob,
-.userprofile, .setting{
-  color: white;
-  margin-right: 30px;
-  text-decoration: none;
-}
-.followingjoblist:hover,
-.joblist:hover, .newjob:hover,
-.userprofile:hover, .setting:hover{
-  text-decoration: underline;
-}
+
+
+
 .logout{
   color: #666;
   text-decoration: none;
@@ -285,17 +578,13 @@ div.srchBox {
   border-bottom: 6px solid #F26E1A;
   margin: 49px 229px 55px;
 }
-.position, .employer, .no, .location,
-.deadline{
-  width: 409px;
-  margin: auto;
-}
+
 .new_post_job label{
   text-align: right;
   line-height: 2.5;
   font-size: 18px;
 }
-.new_post_job input{
+/*.new_post_job input{
   float: right;
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 1) inset;
@@ -303,7 +592,7 @@ div.srchBox {
   width: 240px;
   height: 25px;
   margin-top: 6px;
-}
+}*/
 #job_requirement, #job_benefit,
 #job_company_profile, #job_responsibility, #job_suggestion label{
   /*text-align: right;*/
@@ -312,13 +601,7 @@ div.srchBox {
   float: right;
   margin-top: 14px;
 }
-.new_post_job textarea{
-  width: 350px;
-  height: 100px;
-  border-radius: 4px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 1) inset;
-  border-style: none;
-}
+
 #job_type_id{
   width: 242px;
   margin: 15px 562px;
@@ -382,10 +665,7 @@ div.srchBox {
   display: inline-block;
   margin-bottom: 50px;
 }
-#comment_content{
-  width: 350px;
-  height: 100px;
-}
+
 input[type="submit"]{
 /*  border-style: none;
   background-color: #F26E1A;

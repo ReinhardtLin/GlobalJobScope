@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<script type="text/javascript" src="jquery-2.0.3.js"></script>
+
+<link href="application.css" rel="stylesheet" type="text/css" />
+
+</head>
+<div style="height:60px;"></div>
+<header>
+</header>
+<body>
+<div class="index-bg"></div>
+<div class="countainer"> 
+  <div class="signup">
+  <h2>Sign up</h2>
+
+<form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="kXb7E7d9uZd84oDkMbxDTwvi6JoghFexB0XVT1XRsb4="></div>
+  
+
+  <div><label for="user_email">Email</label><br>
+  <input autofocus="autofocus" id="user_email" name="user[email]" type="email" value=""></div>
+
+  <div><label for="user_username">Username</label><br>
+  <input id="user_username" name="user[username]" type="text"></div>
+
+  <div><label for="user_password">Password</label> <i>(8 characters minimum)</i><br>
+    <input autocomplete="off" id="user_password" name="user[password]" type="password"></div>
+
+  <div><label for="user_password_confirmation">Password confirmation</label><br>
+    <input autocomplete="off" id="user_password_confirmation" name="user[password_confirmation]" type="password"></div>
+
+  <div><input name="commit" type="submit" value="Sign up"></div>
+  <div class="clearfix"></div>
+  <div class="right" style="margin-top:10px;"><a href="/users/sign_in">Log in</a><br></div>
+  <div class="clearfix"></div>
+  </form>
+  </div>
+  
+
+</div>
+<script>
+  $(".search-result").fadeIn(500);
+</script>
+</body>
+</html>

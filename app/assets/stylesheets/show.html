@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<script type="text/javascript" src="jquery-2.0.3.js"></script>
+
+<link href="application.css" rel="stylesheet" type="text/css" />
+
+</head>
+ 
+<div style="height:60px;"></div>
+<header>
+</header>
+<body>
+
+<div class="index-bg"></div>
+<div class="search-result">
+  <div class="countainer"> 
+  <div class="scroll-comment">
+      <ol>
+      <% @job.comments.each do |comment| %>
+    <li>
+      <div class="squ-point"></div>
+      <%= comment.content %> - by <%= comment.user.try(:username)%>
+      <% if @job.can_modify_by?(current_user) || comment.can_delete_by?(current_user) %>
+        <%= link_to 'Delete Comment', job_comment_path(@job, comment), :method => :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+    </div>
+<p>Status</p>
+OPEN
+  <a data-method="patch" href="/jobs/1/hide" rel="nofollow">Close Job</a>
+
+<p>Application</p>
+  0
+
+<p>Follows</p>
+0
+  <form accept-charset="UTF-8" action="/jobs/1/follows" class="new_follow" id="new_follow" method="post"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Ran7BqIHBZxTjMi6LMDNPM2cpP52T2yVX3m8wPrhLWU="></div>
+    <input name="commit" type="submit" value="Follow">
+</form>
+  <h3><a href="/jobs/1/follower">Follow List</a></h3>
+
+  <a href="/jobs/1/edit">Edit</a>
+
+<h3>Position</h3>
+CEO
+
+<h4>Employer</h4>
+GJS
+
+<p>Type: Full-Time</p><p>
+
+</p><p>Number</p>
+1
+
+<p>Location</p>
+Taipei, Singapore
+
+<p>Deadline</p>
+<p>2014-12-31</p>
+
+<p>Salary</p>
+1 ~ 10 @ USD/Yr <br>
+
+  <a href="/jobs/1/edit1">Edit</a>
+
+<p>Requirement</p>
+
+
+<p>Responsibility</p>
+
+
+  <a href="/jobs/1/edit2">Edit</a>
+
+<p>Benefit</p>
+
+
+<p>Company Profile</p>
+
+
+  <a href="/jobs/1/edit3">Edit</a>
+
+<p>Suggestion</p>
+
+
+<h3>Comments</h3>
+<ol>
+  <li>
+    very good job!
+    - by Reinhardt Lin
+      <a data-method="delete" href="/jobs/1/comments/1" rel="nofollow">Delete Comment</a>
+  </li>
+</ol>
+
+<h3>New comment</h3>
+<form accept-charset="UTF-8" action="/jobs/1/comments" class="new_comment" id="new_comment" method="post"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Ran7BqIHBZxTjMi6LMDNPM2cpP52T2yVX3m8wPrhLWU="></div>
+  <textarea id="comment_content" name="comment[content]"></textarea> <br>
+  <input name="commit" type="submit" value="Add New Comment">
+</form>
+</div>
+
+  </div>
+<div>
+<div class="index-bg"></div>
+<script>
+  $(".search-result").fadeIn(500);
+</script>
+</body>
+</html>

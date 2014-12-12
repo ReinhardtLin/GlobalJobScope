@@ -120,11 +120,9 @@
 </ol>
     </div>
     <div class="comment-area">
-	  <h3>Leave your message below</h3>
       <%= form_for Comment.new, :url => job_comments_path(@job) do |f| %>
-	  <%= f.text_area :content %>
-	  <div class="submit-buttom"><%= f.submit "Submit",:class=>'flatbutton apply' %></div>
-	  <div class="clearfix">
+	  <div class="text-area"><%= f.text_area :content %></div>
+	  <div class="submit-buttom"><%= f.submit "Submit" %></div>
 	</div>
     <% end %>
     </div>
