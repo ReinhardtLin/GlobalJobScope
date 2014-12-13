@@ -603,6 +603,15 @@ input[value="Unfollow"]{
   border-radius:5px;
   font-size:20px;
 	}
+.belize{
+   background: #2980b9;
+  border-bottom: 2px solid #2475ab;
+  border-radius:10px;
+  padding:5px 0;	
+	}
+.gray a{
+   color:#000;		
+	}
 .app .red{
   margin-top:3px;	
 	}
@@ -669,10 +678,11 @@ input[value="Unfollow"]{
 /*fileuploader*/
 .upload-file{
 	margin-top:15vh;
-	background-color:rgba(204,102,0,0.6);
+	background-color:rgba(200,200,200,0.6);
 	}
 .upload-file h4{
-	margin:5px 0;
+	margin:15px 0 5px;
+	color:#000;
 	}
 .fileUpload {
 	position: relative;
@@ -698,6 +708,11 @@ input[value="Unfollow"]{
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
+.signup.upload-file [type="submit"]{
+  background: #3498db;
+  border-bottom: 2px solid #2a8bcc;	
+}
+
 
 
 /*   */
