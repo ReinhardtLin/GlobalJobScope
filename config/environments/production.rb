@@ -83,13 +83,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://beta.globaljobscope.com" }
   config.action_mailer.smtp_settings = YAML.load( File.read("#{Rails.root}/config/email.yml") ).symbolize_keys
 
-
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[GJS] ",
+      :sender_address => %{"notifier" <service@globaljobscope.com>},
+      :exception_recipients => %w{reinhardt.lin@gmail.com}
+  }
 
 end
 
-Whatever::Application.config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[GJS] ",
-    :sender_address => %{"notifier" <service@globaljobscope.com>},
-    :exception_recipients => %w{reinhardt.lin@gmail.com}
-}
