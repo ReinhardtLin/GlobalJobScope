@@ -84,4 +84,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = YAML.load( File.read("#{Rails.root}/config/email.yml") ).symbolize_keys
 
 
+
 end
+
+Whatever::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[GJS] ",
+    :sender_address => %{"notifier" <service@globaljobscope.com>},
+    :exception_recipients => %w{reinhardt.lin@gmail.com}
+}
