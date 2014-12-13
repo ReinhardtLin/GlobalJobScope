@@ -49,11 +49,11 @@ body{
 }
 .flatbutton{
   position: relative;
-  vertical-align: top;  
+  vertical-align: top;
   padding: 0;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border: 0; 
+  border: 0;
   cursor: pointer;
 	}
 .flatbutton a,.flatbutton a:hover{
@@ -66,10 +66,10 @@ body{
   box-shadow: none;
 }
 .inblock{
-  display:inline-block;	
+  display:inline-block;
 }
 .text-shadow{
-  text-shadow:1px 1px 1px #666;	
+  text-shadow:1px 1px 1px #666;
 }
 /*hyperlink*/
 a:link {
@@ -99,10 +99,6 @@ header .countainer{
   max-width:1200px;
 	}
 .logo{
-  width:133px;
-  height:28px;
-  background-image:url(logo.png);
-  background-size:cover;
   margin-left:15px;
   float:left;
     }
@@ -126,7 +122,7 @@ header .countainer{
 
 /*index*/
 .index-bg{
-  background-image:url(cover.jpg);
+  background-image: image-url("cover.jpg");
   background-size:cover;
   -webkit-filter: blur(8px);
   width:105%;
@@ -218,10 +214,10 @@ div.srchBox {
     margin-top: 2px;
     font-size: 14px;
 }
-#keyword1 { 
+#keyword1 {
 	padding:6px 15px 6px 30px;
-	margin:3px; 
-	background:url(search.png) no-repeat 8px 6px; 
+	margin:3px;
+	background: image-url("search.png") no-repeat 8px 6px;
 	background-color:#FFF;
 }
 .lighter{
@@ -247,7 +243,7 @@ div.srchBox {
   border-radius:20px;
 	}
 .newjob .flatbutton a{
-  color:#FFF;	
+  color:#FFF;
 	}
 .jobbox{
 	width:90%;
@@ -265,7 +261,7 @@ div.jobbox:nth-child(odd){
 	background:#DDD;
 	}
 .jobbox h2,.jobbox h3,.jobbox h4{
-  color:#004687;	
+  color:#004687;
 	}
 .jobbox-head{
 	border-bottom: 2px solid #000;
@@ -279,31 +275,31 @@ div.jobbox:nth-child(odd){
   margin-top: 25px;
 }
 .detail02{
-  font-size:18px;	
+  font-size:18px;
 	}
 .detail02 h3{
   margin-bottom:10px;
   }
 .salary{
-  font-size:30px;	
+  font-size:30px;
   }
 .detail02 h4{
-  margin:10px 10px 0px 0px;	
+  margin:10px 10px 0px 0px;
   width:65px;
 	}
 .employer{
   font-size: 22px;
   margin-right: 10px;
-  color:#004687;	
+  color:#004687;
 	}
 .detail03{
   margin-top:15px;
-  border-radius:5px;	
+  border-radius:5px;
   background:#CCC;
-  padding:5px 20px 15px 20px;	
+  padding:5px 20px 15px 20px;
 	}
 .detail03 h4{
-  margin:10px 10px 0px 0px;	
+  margin:10px 10px 0px 0px;
 	}
 .jobbox-footer {
   font-size: 20px;
@@ -313,22 +309,22 @@ div.jobbox:nth-child(odd){
 }
 .detail04{
   position:absolute;
-  bottom:0;	
+  bottom:0;
 	}
 .comments-icon{
   width:30px;
   height:30px;
   font-size:0;
-  background-image:url(comment.png);
+  background-image: image-url("comment.png");
   background-repeat:no-repeat;
   background-size:cover;
   display: inline-block;
-  vertical-align:middle;	
+  vertical-align:middle;
 	}
 input[value="Follow"]{
   width: 30px;
   height: 30px;
-  background-image: url(unfollow.png);
+  background-image: image-url("unfollow.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;
@@ -340,7 +336,7 @@ input[value="Follow"]{
 input[value="Unfollow"]{
   width: 30px;
   height: 30px;
-  background-image: url(follow.png);
+  background-image: image-url("follow.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;
@@ -375,7 +371,7 @@ input[value="Unfollow"]{
 	}
 .apply{
 	margin-top:10px;
-    background: #16a085;  
+    background: #16a085;
     border-bottom: 2px solid #14947b;
     color: #FFF;
     padding: 3px 20px;
@@ -400,10 +396,10 @@ input[value="Unfollow"]{
   margin:3vh auto 0;
 	}
 .signup label{
-  font-weight:bold;	
+  font-weight:bold;
 	}
 .signup h2{
-  margin:0 0 10px 0;	
+  margin:0 0 10px 0;
   color:#333;
 	}
 .signup input[type='text'],.signup input[type='email'],.signup input[type='password']{
@@ -425,11 +421,11 @@ input[value="Unfollow"]{
 	}
 .signup [type="submit"],singup [type="submit"]:hover{
   position: relative;
-  vertical-align: top;  
+  vertical-align: top;
   padding: 5px 15px;;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border: 0; 
+  border: 0;
   cursor: pointer;
   color:#FFF !important;
   background: #1abc9c;
@@ -444,10 +440,10 @@ input[value="Unfollow"]{
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  }	
+  }
 
-	
-/*show*/	
+
+/*show*/
 
 .edit.flatbutton{
   background: #e74c3c;
@@ -458,9 +454,9 @@ input[value="Unfollow"]{
   float:right;
 	}
 .edit.flatbutton a{
-  color:#FFF;	
+  color:#FFF;
 	}
-	
+
 .comments-box{
 	width:90%;
 	max-width:800px;
@@ -491,7 +487,7 @@ input[value="Unfollow"]{
 	position:relative;
 	padding:5px 5px;
 	border-radius:8px;
-	}	
+	}
 .scroll-comment ol li .squ-point{
 	width:15px;
 	height:15px;
@@ -519,13 +515,13 @@ input[value="Unfollow"]{
   transition: all 0.5s;
   padding:0 15px;
   width:100%;
-	}	
-	
-/*fllower-list*/	
+	}
+
+/*fllower-list*/
 .follow-list h2{
 	width:90%;
-	max-width:800px;	
-	margin: 20px auto 0px;		
+	max-width:800px;
+	margin: 20px auto 0px;
 	}
 .follow-box{
 	width:90%;
@@ -535,15 +531,15 @@ input[value="Unfollow"]{
 	margin:auto;
 	border-radius:10px;
 	margin-top:15px;
-	position:relative;	
-	}	
+	position:relative;
+	}
 .follow-box .ctrlbar{
 	text-align:right;
-	}	
+	}
 .photo{
 	width:100px;
 	height:100px;
-	}	
+	}
 .basic{
 	max-width:620px;
 	width:100%;
@@ -553,7 +549,7 @@ input[value="Unfollow"]{
 	}
 .loaction{
 	color:#333;
-	}	
+	}
 .summary{
 	margin-top:10px;
 	}
@@ -564,13 +560,13 @@ input[value="Unfollow"]{
 	margin:0 0 5px 0;
 	}
 .app div{
-	font-size:25px;	
-	}	
+	font-size:25px;
+	}
 .green{
-    background: #16a085;  
+    background: #16a085;
     border-bottom: 2px solid #14947b;
     color: #FFF;
-	border-radius:5px;	
+	border-radius:5px;
 	}
 .showd.green{
 	margin:10px auto;
@@ -581,24 +577,24 @@ input[value="Unfollow"]{
   width:30px;
   height:30px;
   font-size:0;
-  background-image:url(mail.png);
+  background-image: image-url("mail.png");
   background-repeat:no-repeat;
   background-size:cover;
   display: inline-block;
   vertical-align:middle;
   margin-right:3px;
-	}	
-	
+	}
+
 .nephritis{
   background: #27ae60;
   border-bottom: 2px solid #219d55;
   color:#FFF;
   border-radius:5px;
   font-size:20px;
-	}	
+	}
 .red{
   background: #c0392b;
-  border-bottom: 2px solid #b53224;	
+  border-bottom: 2px solid #b53224;
   color:#FFF;
   border-radius:5px;
   font-size:20px;
@@ -607,15 +603,15 @@ input[value="Unfollow"]{
    background: #2980b9;
   border-bottom: 2px solid #2475ab;
   border-radius:10px;
-  padding:5px 0;	
+  padding:5px 0;
 	}
 .gray a{
-   color:#000;		
+   color:#000;
 	}
 .app .red{
-  margin-top:3px;	
+  margin-top:3px;
 	}
-	
+
 /*user-show*/
 .edit-box{
 	border:3px groove #DDD;
@@ -688,7 +684,7 @@ input[value="Unfollow"]{
 	position: relative;
 	overflow: hidden;
     background: #666;
-    border-bottom: 2px solid #333;	
+    border-bottom: 2px solid #333;
     color:#FFF;
     border-radius:5px;
    display: inline-block;
@@ -710,7 +706,7 @@ input[value="Unfollow"]{
 }
 .signup.upload-file [type="submit"]{
   background: #3498db;
-  border-bottom: 2px solid #2a8bcc;	
+  border-bottom: 2px solid #2a8bcc;
 }
 
 

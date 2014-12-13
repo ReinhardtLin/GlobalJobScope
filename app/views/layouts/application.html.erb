@@ -5,13 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
+
 <link href="file:///D|/dropbox/gjs/app/assets/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
 <div class="countainer">
-<%= link_to 'GJS Logo', root_path,:class => "logo" %>
+
+<%= link_to image_tag("logo.png", :width => 133, :height => 28, :alt => "GJS Logo"), root_path, :class => "logo" %>
+
 <% if current_user %>
   <ul class="main-nav">
     <li><%= link_to 'My Follow', following_jobs_path %></li>
