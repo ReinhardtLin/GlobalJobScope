@@ -12,6 +12,7 @@ gem 'nested_form_fields'
 
 gem 'aasm'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'exception_notification'
 
 # Re-index:
 # bundle exec rake environment elasticsearch:import:all
