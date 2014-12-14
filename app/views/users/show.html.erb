@@ -4,98 +4,122 @@
 
 <!--edit section start-->
 <div class="edit-box">
-  <div class="flatbutton edit">Edit1</div>
-  <div class="summary-photo left"></div>
+  <% if @user == current_user %>
+  <div class="flatbutton edit">
+    <%= link_to 'Edit', edit_user_path(current_user) %>
+  </div>
+  <% end %>
+  <div class="summary-photo left"><%= link_to image_tag( @user.logo.url(:medium) ), @user.logo.url %></div>
   <div class="basic-edit left">
-    <h2>Reinhardt Lin</h2>
+    <h2><%= @user.username %></h2>
     <h3>Citizen of</h3>
-    <div>Taiwan</div>
+    <div><%= @user.all_countries %></div>
     <h3>Countries eligible to work in</h3>
-    <div>Taiwan, Hong Kong, China</div>
+    <div><%= @user.all_eligibles %></div>
     <h3>Location</h3>
-    <div>Taipei</div>
+    <div><%= @user.birthday %></div>
     <h3>Birthday</h3>
-    <div>1983-07-26</div>
+    <div><%= @user.birthday %></div>
     <h3>Gender</h3>
-    <div>Male</div>
+    <div><%= @user.gender.try(:name) %></div>
     <h3>Summary</h3>
-    <div>以牙還牙，加倍奉還 以牙還牙，加倍奉還 以牙還牙，加倍奉還 以牙還牙，加倍奉還 以牙還牙，加倍奉還</div>
+    <div><%= @user.summary %></div>
   </div>
   <div class="clearfix"></div>
 </div>
 
 <div class="edit-box">
-  <div class="flatbutton edit">Edit2</div>
+  <% if @user == current_user %>
+  <div class="flatbutton edit">
+    <%= link_to 'Edit', edit1_user_path(current_user) %>
+  </div>
+  <% end %>
+
   <h2 class="text-shadow">Experience</h2>
+
+  <% @user.experiences.each do |experience| %>
   <div class="basic-edit">
     <div class="detial-box">
       <h3>Position</h3>
-      <div>Project Manager</div>
+      <div><%= experience.position_name %></div>
     </div>
     <div class="detial-box">
       <h3>Employer</h3>
-      <div>ZyXEL Communication</div>
+      <div><%= experience.employer_name %></div>
     </div>
     <div class="detial-box">
       <h3>Current</h3>
-      <div>No</div>
+      <div><%= experience.current.try(:name) %></div>
     </div>
     <div class="detial-box">
       <h3>Location</h3>
-      <div>Hsin-Chu Science Park</div>
+      <div><%= experience.all_locations %></div>
     </div>
     <div class="detial-box">
       <h3>Salary</h3>
-      <div>28000 USD/Yr</div>
+      <div><%= experience.salary %> USD/Yr</div>
     </div>
     <div class="detial-box">
       <h3>Period</h3>
-      <div>2007-11-01 ~ 2009-10-11</div>
+      <div><%= experience.from %> ~ <%= experience.to %></div>
     </div>
     <h3>Description</h3>
-    <div>I was a good PM!</div>
+    <div><%= experience.description %></div>
   </div>
+  <% end %>
 </div>
 
 <div class="edit-box">
-  <div class="flatbutton edit">Edit3</div>
+  <% if @user == current_user %>
+  <div class="flatbutton edit">
+    <%= link_to 'Edit', edit2_user_path(current_user) %>
+  </div>
+  <% end %>
+
   <h2 class="text-shadow">Education</h2>
+  <% @user.educations.each do |education| %>
   <div class="basic-edit">
     <div class="detial-box">
       <h3>Degree</h3>
-      <div>MBA</div>
+      <div><%= education.degree_name %></div>
     </div>
     <div class="detial-box">
       <h3>Institute</h3>
-      <div>ESMT</div>
+      <div><%= education.institute_name %></div>
     </div>
     <div class="detial-box">
       <h3>Current</h3>
-      <div>No</div>
+      <div><%= education.current.try(:name) %></div>
     </div>
     <div class="detial-box">
       <h3>Location</h3>
-      <div>Berlin</div>
+      <div><%= education.all_locations %></div>
     </div>
     <div class="detial-box">
       <h3>Profession</h3>
-      <div>MBA, Social Business	</div>
+      <div><%= education.all_professions %></div>
     </div>
     <div class="detial-box">
       <h3>Period</h3>
-      <div>2013-01-14 ~ 2013-12-19</div>
+      <div><%= education.from %> ~ <%= education.to %></div>
     </div>
     <h3>Description</h3>
-    <div>I was a good student!</div>
+    <div><%= education.description %></div>
   </div>
+  <% end %>
 </div>
 
 <div class="edit-box">
-  <div class="flatbutton edit">Edit3</div>
+  <% if @user == current_user %>
+  <div class="flatbutton edit">
+    <%= link_to 'Edit', edit3_user_path(current_user) %>
+  </div>
+  <% end %>
   <h2 class="text-shadow">Language & Skill</h2>
   <div class="basic-edit">
     <h3>Language</h3>
     <div>
+    <% @user.speakings.each do |speaking| %>
       <table id="language">
         <tbody>
         <tr>
@@ -103,19 +127,12 @@
           <th>Level</th>
         </tr>
         <tr>
-          <td>Chinese</td>
-          <td>Native</td>
-        </tr>
-        <tr>
-          <td>Taiwanese</td>
-          <td>Native</td>
-        </tr>
-        <tr>
-          <td>English</td>
-          <td>Proficient</td>
+          <td><%= speaking.language_name %></td>
+          <td><%= speaking.try(:name) %></td>
         </tr>
       </tbody>
     </table>
+  <% end %>
   </div>
     <h3>Skill</h3>
     <div>Mouth gun! </div>
@@ -125,123 +142,6 @@
 </div>
 
 <!--edit section end-->
-
-
-
-
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit_user_path(current_user) %>
-<% end %>
-
-<h2><%= @user.username %></h2>
-
-<h3>Photo</h3>
-<%= link_to image_tag( @user.logo.url(:medium) ), @user.logo.url %>
-
-<h3>Summary</h3>
-<%= @user.summary %>
-
-<table border="1">
-  <tr>
-    <th>Citizen of</th>
-    <th>Countries eligible to work in</th>
-    <th>Location</th>
-    <th>Birthday</th>
-    <th>Gender</th>
-  </tr>
-  <tr>
-    <td><%= @user.all_countries %></td>
-    <td><%= @user.all_eligibles %></td>
-    <td><%= @user.all_locations %></td>
-    <td><%= @user.birthday %></td>
-    <td><%= @user.gender.try(:name) %></td>
-  </tr>
-</table>
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit1_user_path(current_user) %>
-<% end %>
-
-<h3>Experience</h3>
-<table border="1">
-  <tr>
-    <th>Position</th>
-    <th>Employer</th>
-    <th>Current</th>
-    <th>Location</th>
-    <th>Salary</th>
-    <th>Period</th>
-    <th>Description</th>
-  </tr>
-  <% @user.experiences.each do |experience| %>
-  <tr>
-    <td><%= experience.position_name %></td>
-    <td><%= experience.employer_name %></td>
-    <td><%= experience.current.try(:name) %></td>
-    <td><%= experience.all_locations %></td>
-    <td><%= experience.salary %> USD/Yr</td>
-    <td><%= experience.from %> ~ <%= experience.to %></td>
-    <td><%= experience.description %></td>
-  </tr>
-  <% end %>
-</table>
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit2_user_path(current_user) %>
-<% end %>
-
-<h3>Education</h3>
-<table border="1">
-  <tr>
-    <th>Degree</th>
-    <th>Institute</th>
-    <th>Current</th>
-    <th>Location</th>
-    <th>Profession</th>
-    <th>Period</th>
-    <th>Description</th>
-  </tr>
-  <% @user.educations.each do |education| %>
-  <tr>
-    <td><%= education.degree_name %></td>
-    <td><%= education.institute_name %></td>
-    <td><%= education.current.try(:name) %></td>
-    <td><%= education.all_locations %></td>
-    <td><%= education.all_professions %></td>
-    <td><%= education.from %> ~ <%= education.to %></td>
-    <td><%= education.description %></td>
-  </tr>
-  <% end %>
-</table>
-
-<% if @user == current_user %>
-  <%= link_to 'Edit', edit3_user_path(current_user) %>
-<% end %>
-<h3>Language</h3>
-<table>
-  <tr>
-    <th>Language</th>
-    <th>Level</th>
-  </tr>
-  <% @user.speakings.each do |speaking| %>
-  <tr>
-    <td><%= speaking.language_name %></td>
-    <td><%= speaking.try(:name) %></td>
-  </tr>
-  <% end %>
-</table>
-
-<h3>Skill</h3>
-<%= @user.skill %> <br>
-
-<h3>Other Info</h3>
-<%= @user.other_info %> <br>
-
-<%= link_to 'Home', jobs_path %>
-    </div>
-  </div>
-</div>
 
 <script>
   $(".search-result").fadeIn(500);

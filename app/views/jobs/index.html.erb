@@ -11,48 +11,26 @@
   </div>
 </div>
 
-<% if @enable_post_new_job %>
-  <%= link_to 'Post New Job', new_job_path %>
-<% end %>
-
-<% if @jobs.any? %>
-
-<table border="1">
-  <tr>
-    <th>Position</th>
-    <th>Employer</th>
-    <th>Type</th>
-    <th>Number</th>
-    <th>Location</th>
-    <th>Salary</th>
-    <th>Deadline</th>
-    <th>Follows</th>
-    <th>Comments</th>
-    <th>Poster</th>
-    <th>Operation</th>
-    <% if application_head(@jobs[0]) %>
-      <th>Application</th>
-    <% end %>
-  </tr>
 <div class="search-result">
   <div class="countainer">
-      <div class="lighter">
-	  <%= form_tag root_path, :method => :get do %>
+
+    <div class="lighter">
+    <%= form_tag root_path, :method => :get do %>
       <%= text_field_tag "keyword1", nil, {:placeholder => "Text keyword here"} %>
       <%= submit_tag "Search", :class => "searchtop flatbutton" %>
-	  <% end %>
+    <% end %>
     </div>
-<% if @enable_post_new_job %>
-<div class="newjob">
-<div class="flatbutton">
-  <%= link_to 'Post New Job', new_job_path %>
-</div>
-</div>
-<% end %>
+
+  <% if @enable_post_new_job %>
+  <div class="newjob">
+    <div class="flatbutton">
+      <%= link_to 'Post New Job', new_job_path %>
+    </div>
+  </div>
+  <% end %>
+
+<% if @jobs.any? %>
 <% @jobs.each do |job| %>
-
-
-
 	<div class="jobbox">
         <div class="jobbox-head">
           <h1 class="position left"><%= job.position_name %></h1>
@@ -130,63 +108,7 @@
           <div class="clearfix"></div>
         </div>
       </div>
-<% end %>
-
-  <% @jobs.each do |job| %>
-  <tr>
-    <td><%= job.position_name %></td>
-    <td><%= job.employer_name %></td>
-    <td><%= job.type.try(:name) %></td>
-    <td><%= job.number %></td>
-    <td><%= raw location_links(job.all_locations)%></td>
-    <td><%= job.salary_min %> ~ <%= job.salary_max %> @ <%= job.currency %>/Yr</td>
-    <td><%= job.deadline %></td>
-    <td>
-      <%= job.follows_count %>
-      <% if follow = job.find_by_follow(current_user) %>
-        <%= form_for Follow.new, :url => job_follow_path(job, follow), :method => :delete do |f| %>
-          <%= f.submit "Unfollow" %>
-        <% end %>
-      <% else %>
-        <%= form_for Follow.new, :url => job_follows_path(job) do |f| %>
-          <%= f.submit "Follow" %>
-        <% end %>
-      <% end %>
-    </td>
-    <td><%= job.comments_count %></td>
-    <td>
-      <%= link_to job.user.username, user_path(job.user) %>
-    </td>
-    <td>
-      <%= link_to "Show Detail", job_path(job) %>
-      <% if job.can_modify_by?(current_user) %>
-        <%= link_to "Edit Job", edit_job_path(job) %>
-        <%= link_to "Follow List", follower_job_path(job) %>
-        <% if job.open? %>
-          <%= link_to "Close Job", hide_job_path(job), :method => :patch %>
-        <% else %>
-          <%= job.display_status %>
-        <% end %>
-      <% end %>
-      <%#= link_to "Delete Job", job_path(job), :method => :delete %>
-    </td>
-    <% unless job.can_modify_by?(current_user) %>
-    <td>
-      <% if submission = job.find_by_submission(current_user) %>
-          <%= submission.aasm_state %>
-          <% if submission.admitted? %>
-            <%= link_to "Confirm", confirm_job_submission_path(job, submission), :method => :patch %>
-            <%= link_to "Decline", decline_job_submission_path(job, submission), :method => :patch %>
-          <% end %>
-      <% else %>
-        expecting
-        <%= link_to "Apply", new_job_submission_path(job) %>
-      <% end %>
-    </td>
     <% end %>
-  </tr>
-  <% end %>
-</table>
   </div>
 </div>
 <% end %>

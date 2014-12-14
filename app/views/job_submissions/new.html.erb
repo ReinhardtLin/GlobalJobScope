@@ -1,8 +1,8 @@
 <div class="search-result">
-  <div class="countainer"> 
+  <div class="countainer">
     <div class="signup upload-file">
-  
-  
+
+
 <%= form_for Submission.new, :url => job_submissions_path(@job) do |f| %>
 
   <div class="flatbutton belize"><%= link_to "View My Profile", user_path(current_user) %></div>
@@ -12,11 +12,11 @@
       <span>Upload</span>
       <%= f.file_field :logo %> <br>
     </div>
-  </div>  
+  </div>
   <%= f.submit "Submit" %>
 <% end %>
   <div class="clearfix"></div>
-  
+
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="search-result">
   <div class="countainer follow-list">
 
-
+<% if @job.follows.any? %>
 <h2>Follow List</h2>
 
 <!--Follow list start-->
@@ -50,50 +50,8 @@
   <div class="summary"><%= f.user.summary %></div>
   </div>
   <% end %>
-<!--Follow list end-->
-
-
-<% if @job.follows.any? %>
-<table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Photo</th>
-    <th>Citizen of</th>
-    <th>Location</th>
-    <th>Summary</th>
-    <th>Operation</th>
-    <th>Application</th>
-  </tr>
-  <% @job.follows.each do |f| %>
-  <tr>
-    <td><%= link_to f.user.try(:username), user_path(f.user) %></td>
-    <td><%= f.user.email %></td>
-    <td><%= image_tag( f.user.logo.url(:thumb) ) %></td>
-    <td><%= f.user.all_countries %></td>
-    <td><%= f.user.all_locations %></td>
-    <td><%= f.user.summary %></td>
-    <td>
-      <%= link_to "Show Detail", user_path(f.user) %>
-    </td>
-    <td>
-      <% if submission = @job.find_by_submission(f.user) %>
-        <%= submission.aasm_state %>
-        <% if submission.applying? %>
-          <%= link_to "Admit", admit_job_submission_path(@job, submission), :method => :patch %>
-          <%= link_to "Reject", reject_job_submission_path(@job, submission), :method => :patch %>
-        <% elsif submission.declined? %>
-          <%= link_to "Admit", emphasize_job_submission_path(@job, submission), :method => :patch %>
-          <%= link_to "Withdraw", refuse_job_submission_path(@job, submission), :method => :patch %>
-        <% end %>
-      <% else %>
-        expecting
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
 <% end %>
+<!--Follow list end-->
   </div>
 </div>
 
