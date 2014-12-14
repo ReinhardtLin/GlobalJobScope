@@ -11,6 +11,7 @@
   </div>
 </div>
 
+<% if @jobs.any? %>
 <div class="search-result">
   <div class="countainer">
 
@@ -29,7 +30,6 @@
   </div>
   <% end %>
 
-<% if @jobs.any? %>
 <% @jobs.each do |job| %>
 	<div class="jobbox">
         <div class="jobbox-head">
